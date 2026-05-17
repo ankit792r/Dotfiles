@@ -5,6 +5,7 @@ include "./autostart.kdl"
 include "./layer-rules.kdl"
 include "./window-rules.kdl"
 include "./bindings.kdl"
+include "./animation.kdl"
 include "./misc.kdl"
 
 overview {
