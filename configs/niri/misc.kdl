@@ -2,13 +2,11 @@ prefer-no-csd
 screenshot-path "~/Pictures/Screenshots/screenshot from %Y-%m-%d %H-%M-%S.png"
 
 hotkey-overlay {
-    // Avoid auto-showing the important hotkeys menu.
-    skip-at-startup
+  skip-at-startup
 }
 
 gestures {
-    // Disable overview when mousing over the top left of primary screen.
-    hot-corners {
-        // off
-    }
+  hot-corners {
+    // off
+  }
 }

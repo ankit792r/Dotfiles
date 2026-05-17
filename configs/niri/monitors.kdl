@@ -1,15 +1,15 @@
 // laptop monitor
 output "eDP-1" {
-    mode "1920x1080@144.000"
-    scale 1
-    transform "normal"
-    position x=0 y=0
+  mode "1920x1080@144.000"
+  scale 1
+  transform "normal"
+  position x=0 y=0
 }
 
 // office monitor
 output "HDMI-A-1" {
-    mode "1920x1080@74.973"
-    scale 1
-    transform "normal"
-    position x=0 y=0
+  mode "1920x1080@74.973"
+  scale 1
+  transform "normal"
+  position x=0 y=0
 }

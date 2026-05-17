@@ -1,57 +1,48 @@
 window-rule {
-    draw-border-with-background false 
+  draw-border-with-background false
 }
-
 
 window-rule {
   match app-id=r#"^kitty$"#
 
-  opacity 0.85
+  opacity 0.88
   // background-effect {
   //   blur true
   // }
 }
 
 window-rule {
-    match app-id=r#"^Pinentry-gtk$"#
-    match app-id=r#"^Tk$"#
-    match app-id=r#"^gimp$"# title=r#"Preferences"#
-    match app-id=r#"^mpv$"#
-    match app-id=r#"^soffice$"# title=r#"^Text Import"#
-    match app-id=r#"^thunar$"# title=r#"^Rename "#
-    match app-id=r#"^wev$"#
-    match app-id=r#"^xarchiver$"#
-    match app-id=r#"firefox$"# title=r#"^(Picture-in-Picture|Library|About Mozilla Firefox)$"#
+  match app-id=r#"^Pinentry-gtk$"#
+  match app-id=r#"^Tk$"#
+  match app-id=r#"^gimp$"# title=r#"Preferences"#
+  match app-id=r#"^mpv$"#
+  match app-id=r#"^soffice$"# title=r#"^Text Import"#
+  match app-id=r#"^thunar$"# title=r#"^Rename"#
+  match app-id=r#"^wev$"#
+  match app-id=r#"^xarchiver$"#
+  match app-id=r#"^firefox$"# title=r#"^(Picture-in-Picture|Library|About Mozilla Firefox)$"#
 
-    open-floating true
+  open-floating true
 }
 
 window-rule {
-    match app-id=r#"^dot\.floating\.ghostty$"#
-    match app-id=r#"^dot\.floating\.thunar$"#
+  match app-id=r#"^com\.gabm\.satty$"#
 
-    open-floating true
-    default-column-width { proportion 0.33; }
-    default-window-height { proportion 0.5; }
+  open-floating true
+  min-width 730
+  min-height 300
 }
 
 window-rule {
-    match app-id=r#"^com\.gabm\.satty$"#
-    open-floating true
-    min-width 730
-    min-height 300
+  match app-id=r#"^firefox$"#
+
+  opacity 1.0
+  default-column-width { proportion 0.75; }
 }
 
 window-rule {
-    match app-id=r#"firefox"#
+  match app-id=r#"^org\.keepassxc\.KeePassXC$"#
+  match app-id=r#"^org\.gnome\.World\.Secrets$"#
 
-    opacity 1.0
-    default-column-width { proportion 0.75; }
-}
-
-window-rule {
-    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
-    match app-id=r#"^org\.gnome\.World\.Secrets$"#
-
-    block-out-from "screen-capture"
+  block-out-from "screen-capture"
 }

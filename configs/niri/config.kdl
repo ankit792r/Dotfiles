@@ -9,37 +9,37 @@ include "./animation.kdl"
 include "./misc.kdl"
 
 overview {
-   zoom 0.6
-   workspace-shadow {
-	   off
-   }
+  zoom 0.6
+  workspace-shadow {
+    off
+  }
 }
 
 layout {
-    gaps 0
-    always-center-single-column
-    center-focused-column "never"
-    background-color "transparent"
+  gaps 6
+  always-center-single-column
+  center-focused-column "never"
+  background-color "transparent"
 
-    preset-column-widths {
-        proportion 0.33333
-        proportion 0.5
-        proportion 0.66667
-    }
+  preset-column-widths {
+    proportion 0.33333
+    proportion 0.5
+    proportion 0.66667
+  }
 
-    default-column-width { proportion 0.5; }
-    focus-ring { off; }
+  default-column-width { proportion 0.5; }
+  focus-ring { off; }
 
-    border {
-      width 2
-      active-color "#74738C"
-      inactive-color "#34333f"
-    }
+  border {
+    width 2
+    active-color "#4c566a"
+    inactive-color "#23252e"
+  }
 
-    struts {
-        left 0
-        right 0
-        top 0
-        bottom 0
-    }
+  struts {
+    left 0
+    right 0
+    top 0
+    bottom 0
+  }
 }

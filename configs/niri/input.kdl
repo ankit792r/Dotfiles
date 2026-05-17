@@ -1,28 +1,39 @@
 input {
-    keyboard {
-        xkb {}
-
-        repeat-delay 200
-        repeat-rate 25
+  keyboard {
+    xkb {
+      // layout "us"
+      // variant ""
+      // options "caps:escape"
     }
 
-    touchpad {
-      tap 
-      natural-scroll 
-      accel-profile "flat"
-      accel-speed 0.6
-    }
-
-    mouse {
-      accel-profile "flat"
-      scroll-factor 2.0
+    repeat-delay 180
+    repeat-rate 35
+    // numlock
   }
 
-    focus-follows-mouse max-scroll-amount="0%"
+  touchpad {
+    tap
+    dwt
+    natural-scroll
+    tap-button-map "left-right-middle"
+    accel-profile "adaptive"
+    accel-speed 0.35
+    disabled-on-external-mouse
+  }
+
+  mouse {
+    accel-profile "flat"
+    accel-speed 0.1
+    scroll-factor 1.4
+  }
+
+  focus-follows-mouse max-scroll-amount="15%"
+  warp-mouse-to-focus
 }
 
 cursor {
   xcursor-theme "Qogir-cursors"
   xcursor-size 28
   hide-when-typing
+  hide-after-inactive-ms 2500
 }
