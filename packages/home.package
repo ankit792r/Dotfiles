@@ -41,6 +41,7 @@ qt6ct
 mtpfs
 gvfs-mtp
 android-udev
+intel-gpu-tools
 
 inter-font
 adobe-source-sans-fonts
