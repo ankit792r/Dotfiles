@@ -119,16 +119,6 @@ return {
     },
 
 		{
-			"<leader>e",
-			function()
-				Snacks.explorer({
-					cwd = vim.fn.getcwd(),
-				})
-			end,
-			desc = "File Explorer",
-		},
-
-		{
 			"<leader>fb",
 			function()
 				Snacks.picker.buffers({
