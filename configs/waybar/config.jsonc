@@ -2,7 +2,7 @@
   "layer":"top",
   "position": "bottom",
   "height": 28,
-  "modules-left": ["niri/workspaces", "niri/window"],
+  "modules-left": ["hyprland/workspaces", "hyprland/window",  "niri/workspaces", "niri/window"],
   "modules-center": [],
   "modules-right": [
     "pulseaudio",
