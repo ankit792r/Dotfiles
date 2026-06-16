@@ -1,65 +1,82 @@
-# Sway config for ME
+# Default config for sway
+#
+# Copy this to ~/.config/sway/config and edit it to your liking.
+#
+# Read `man 5 sway` for a complete reference.
 
-# variables
-set $alt Mod1
-set $mod Mod4
-
+### Variables
+#
+# Logo key. Use Mod1 for Alt.
+set $mod Mod1
+# Home row direction keys, like vim
 set $left h
 set $down j
 set $up k
 set $right l
-
-set $term kitty
+# Your preferred terminal emulator
+set $term ghostty
 set $browser firefox
-set $menu rofi -show drun
 
-font pango:Iosevka Nerd Font 11
+font pango:Iosevka Term 6
 
-# Outputs
-# get the names of outputs by running: swaymsg -t get_outputs
-output eDP-1 mode 1920x1080@60.052Hz pos 2560 0 scale 1
-# output DP-2 mode 2560x1440@100Hz pos 0 0 scale 1
-output * bg ~/Downloads/tree.jpg fill
+### Output configuration
+#
+# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+# tearing
+#
+# Example configuration:
+#
+output eDP-1 mode 2560x1600@165Hz pos 2560 0 scale 1
+output DP-2 mode 2560x1440@100Hz pos 0 0 scale 1
+output * bg ~/dotfiles/wallpapers/samori.jpg fill
 output * allow_tearing yes
 output * max_render_time off
+#
+# You can get the names of your outputs by running: swaymsg -t get_outputs
 
-
-# Idle configuration
+### Idle configuration
+#
+# Example configuration:
+#
+exec swayidle -w \
+         timeout 3000 'swaylock -f -c 000000' \
+         timeout 6000 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+         before-sleep 'swaylock -f -c 000000'
+#
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
-# exec swayidle -w \
-#          timeout 3000 'swaylock -f -c 000000' \
-#          timeout 6000 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-#          before-sleep 'swaylock -f -c 000000'
-exec --no-startup-id hypridle
-exec --no-startup-id mako
-exec --no-startup-id wlsunset -t 5000
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id cliphist store
-exec --no-startup-id udiskie
 
 ### Input configuration
-# Get the names of inputs by running: swaymsg -t get_inputs
-  input "2:7:SynPS/2_Synaptics_TouchPad" {
+#
+# Example configuration:
+#
+  input "2:14:SynPS/2_Synaptics_TouchPad" {
       dwt enabled
       tap enabled
       natural_scroll enabled
       middle_emulation enabled
   }
 #
+# You can get the names of your inputs by running: swaymsg -t get_inputs
+# Read `man 5 sway-input` for more information about this section.
+
 ### Key bindings
+#
+# Basics:
+#
     bindsym $mod+Return exec $term
     bindsym $mod+Shift+Return exec prime-run $term
     bindsym $mod+Shift+f exec prime-run $browser
 
-    bindsym $mod+x kill
+    bindsym $mod+Shift+q kill
     bindsym $mod+Shift+z exec slurp | grim -g - - | wl-copy
 
 
     # Start your launcher
     # bindsym $mod+d exec $menu
-    bindsym $mod+d exec --no-startup-id $menu
+    bindsym $mod+d exec --no-startup-id rofi -modes "window,drun,combi" -show combi --window-title "run"
+    bindsym $mod+Shift+d exec --no-startup-id prime-run rofi -modes "window,drun,combi" -show combi --window-title "prime-run"
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -69,11 +86,10 @@ exec --no-startup-id udiskie
     floating_modifier $mod normal
 
     # Reload the configuration file
-    bindsym $mod+Shift+c reload
+    bindsym $mod+Shift+r reload
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
-    bindsym $mod+Alt+L exec pkill hyprlock || hyprlock
 
 input * {
     repeat_delay 200       
@@ -90,10 +106,10 @@ input * {
     bindsym $mod+$up focus up
     bindsym $mod+$right focus right
     # Or use $mod+[up|down|left|right]
-    bindsym $mod+Left focus left
-    bindsym $mod+Down focus down
-    bindsym $mod+Up focus up
-    bindsym $mod+Right focus right
+    # bindsym $mod+Left focus left
+    # bindsym $mod+Down focus down
+    # bindsym $mod+Up focus up
+    # bindsym $mod+Right focus right
 
     # Move the focused window with the same, but add Shift
     bindsym $mod+Shift+$left move left
@@ -142,7 +158,7 @@ input * {
     bindsym $mod+v splitv
 
     # Switch the current container between different layout styles
-    bindsym $mod+s layout stacking
+    # bindsym $mod+s layout stacking
     bindsym $mod+w layout tabbed
     bindsym $mod+e layout toggle split
 
@@ -151,8 +167,7 @@ input * {
     bindsym $mod+space focus mode_toggle
 
     # Move focus to the parent container
-    bindsym $mod+Shift+a focus parent
-    bindsym $mod+a focus child
+    bindsym $mod+a focus parent
 #
 # Scratchpad:
 #
@@ -169,10 +184,10 @@ input * {
 # Resizing containers:
 #
 mode "resize" {
-    bindsym $right resize shrink width 20px
-    bindsym $up resize grow height 20px
-    bindsym $down resize shrink height 20px
-    bindsym $left resize grow width 20px
+    bindsym $left resize shrink width 80px
+    bindsym $down resize grow height 80px
+    bindsym $up resize shrink height 80px
+    bindsym $right resize grow width 80px
 
     bindsym $mod+r mode "default"
     bindsym Return mode "default"
@@ -206,36 +221,61 @@ bindsym $mod+z mode "special"
     # Special key to take a screenshot with grim
     bindsym Print exec grim
 
+#
+# Status Bar:
+#
+# Read `man 5 sway-bar` for more information about this section.
 
-client.focused   #26233a #26233a #e0def4 #286983 #26233a
-client.unfocused #191724 #191724 #e0def4 #286983 #191724
-client.focused_inactive #191724 #191724 #e0def4 #286983 #191724
-
+client.focused #9b8d7f #9b8d7f #000000 #9b8d7f #9b8d7f
+client.focused_inactive #202020 #202020 #9b8d7f #202020 #202020
+client.unfocused #202020 #202020 #9b8d7f #202020 #202020
 
 bar {
-    position bottom
+    # swaybar_command swaybar
     swaybar_command waybar
+
+    # When the status_command prints a new line to stdout, swaybar updates.
+    # The default just shows the current date and time.
+    status_command while date +'%Y-%m-%d :: %X'; do sleep 1; done
+
+  position bottom
+  separator_symbol "::"
+  colors {
+    background #222222
+    statusline #9b8d7f
+    separator #9b8d7f
+
+    focused_workspace #9b8d7f #9b8d7f #222222
+    inactive_workspace #222222 #222222 #9b8d7f
+    active_workspace #222222 #222222 #9b8d7f
+    urgent_workspace #222222 #222222 #9b8d7f
+    binding_mode #222222 #222222 #9b8d7f
+  }
+  font pango:Iosevka Term 12
+  tray_output HDMI-A-0
 }
 
 
-for_window [floating] border normal 2
 for_window {
   [app_id="pavucontrol"] floating enable
   [title="game-*"] floating enable, resize set 1920 1080
   [title="app-*"] floating enable, resize set 1920 1080
 }
 
-# default_border pixel 2
-# default_floating_border normal 2
-# hide_edge_borders smart
+workspace 5 gaps horizontal 100
+workspace 5 gaps vertical 30
+workspace 5 gaps inner 20
 
-focus_follows_mouse yes
-mouse_warping output
-force_display_urgency_hint 500 ms
-# floating_minimum_size 400 x 300
-# floating_maximum_size -1 x -1
-tiling_drag enable
-workspace_auto_back_and_forth no
 
+# exec --no-startup-id xfsettingsd --sm-client-disable
+# exec --no-startup-id xfce4-power-manager
+# exec --no-startup-id xfce4-clipman
+# exec --no-startup-id dunst
+# exec --no-startup-id thunar --daemon
+# exec --no-startup-id xfce4-volumed
+exec --no-startup-id fcitx -d
+
+default_border pixel 2
+default_floating_border pixel 2
 
 include /etc/sway/config.d/*

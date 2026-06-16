@@ -1,0 +1,4 @@
+# Main sway config
+
+include conf.d/*.conf
+include /etc/sway/config.d/*
