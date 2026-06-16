@@ -3,6 +3,7 @@
   border-radius: 0;
   min-height: 0;
   font-family: "Iosevka Nerd Font";
+  font-weight: bold;
   font-size: 14px;
 }
 
@@ -75,29 +76,34 @@ button:hover {
 
 #battery.charging,
 #battery.plugged {
-  background-color: #286983;
-  color: #c0caf5;
+  color: #286983;
+  /* background-color: #286983; */
+  /* color: #c0caf5; */
 }
 
 #battery.critical:not(.charging),
 #battery.warning:not(.charging) {
-  background-color: #b4637a;
-  color: #c0caf5;
+  color: #b4637a;
+  /* background-color: #b4637a; */
+  /* color: #c0caf5; */
 }
 
 #temperature.critical {
-  background-color: #b4637a;
-  color: #c0caf5;
+  color: #b4637a;
+  /* background-color: #b4637a; */
+  /* color: #c0caf5; */
 }
 
 #network.disconnected {
-  background-color: #b4637a;
-  color: #c0caf5;
+  color: #b4637a;
+  /* background-color: #b4637a; */
+  /* color: #c0caf5; */
 }
 
 #network.disabled {
   background-color: #b4637a;
-  color: #c0caf5;
+  /* background-color: #b4637a; */
+  /* color: #c0caf5; */
 }
 
 #tray {
@@ -107,7 +113,7 @@ button:hover {
 }
 
 #tray > .needs-attention {
-  color: #b4637a;
+  /* color: #b4637a; */
   border-bottom-color: #b4637a;
 }
 
