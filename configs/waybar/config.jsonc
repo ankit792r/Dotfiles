@@ -3,8 +3,10 @@
   "position": "bottom",
   "height": 28,
   "modules-left": [
-    "niri/workspaces",
-    "niri/window"
+    "sway/workspaces",
+    "sway/mode"
+    // "niri/workspaces",
+    // "niri/window"
   ],
   "modules-center": [],
   "modules-right": [
