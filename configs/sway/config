@@ -109,27 +109,28 @@ input * {
 # Workspaces:
 #
     # Switch to workspace
-    bindsym $mod+y workspace number 1
-    bindsym $mod+u workspace number 2
-    bindsym $mod+i workspace number 3
-    bindsym $mod+o workspace number 4
-    bindsym $mod+p workspace number 5
-    bindsym $mod+6 workspace number 6
-    bindsym $mod+7 workspace number 7
-    bindsym $mod+8 workspace number 8
-    bindsym $mod+9 workspace number 9
-    bindsym $mod+0 workspace number 10
+    bindsym $mod+u workspace number 1
+    bindsym $mod+i workspace number 2
+    bindsym $mod+o workspace number 3
+    bindsym $mod+p workspace number 4
+    bindsym $mod+7 workspace number 5
+    bindsym $mod+8 workspace number 6
+    bindsym $mod+9 workspace number 7
+    bindsym $mod+0 workspace number 8
+    # bindsym $mod+9 workspace number 9
+    # bindsym $mod+0 workspace number 10
+
     # Move focused container to workspace
-    bindsym $mod+Shift+y move container to workspace number 1
-    bindsym $mod+Shift+u move container to workspace number 2
-    bindsym $mod+Shift+i move container to workspace number 3
-    bindsym $mod+Shift+o move container to workspace number 4
-    bindsym $mod+Shift+p move container to workspace number 5
-    bindsym $mod+Shift+6 move container to workspace number 6
-    bindsym $mod+Shift+7 move container to workspace number 7
-    bindsym $mod+Shift+8 move container to workspace number 8
-    bindsym $mod+Shift+9 move container to workspace number 9
-    bindsym $mod+Shift+0 move container to workspace number 10
+    bindsym $mod+Shift+u move container to workspace number 1
+    bindsym $mod+Shift+i move container to workspace number 2
+    bindsym $mod+Shift+o move container to workspace number 3
+    bindsym $mod+Shift+p move container to workspace number 4
+    bindsym $mod+Shift+7 move container to workspace number 5
+    bindsym $mod+Shift+8 move container to workspace number 6
+    bindsym $mod+Shift+9 move container to workspace number 7
+    bindsym $mod+Shift+0 move container to workspace number 8
+    # bindsym $mod+Shift+9 move container to workspace number 9
+    # bindsym $mod+Shift+0 move container to workspace number 10
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
 #
@@ -207,7 +208,7 @@ bindsym $mod+z mode "special"
     bindsym Print exec grim
 
 
-client.focused   #26233a #26233a #e0def4 #286983 #26233a
+client.focused   #403d52 #403d52 #e0def4 #286983 #403d52
 client.unfocused #191724 #191724 #e0def4 #286983 #191724
 client.focused_inactive #191724 #191724 #e0def4 #286983 #191724
 
@@ -217,6 +218,13 @@ bar {
     swaybar_command waybar
 }
 
+for_window [title="Picture-in-Picture"] floating enable
+for_window [app_id="pavucontrol"] floating enable
+for_window [app_id="blueman-manager"] floating enable
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="dialog"] floating enable
+for_window [title="Authentication Required"] floating enable
+for_window [app_id="rofi"] floating enable
 
 for_window [floating] border normal 2
 for_window {
@@ -226,8 +234,11 @@ for_window {
 }
 
 # default_border pixel 2
-# default_floating_border normal 2
+default_floating_border normal 2
 # hide_edge_borders smart
+
+workspace_layout default
+default_orientation auto
 
 focus_follows_mouse yes
 mouse_warping output
