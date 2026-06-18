@@ -56,6 +56,9 @@ exec --no-startup-id udiskie
     bindsym $mod+x kill
     bindsym $mod+Shift+z exec slurp | grim -g - - | wl-copy
 
+    bindsym $mod+Backspace exec ~/Bansuri/scripts/power-menu
+    bindsym $mod+Backslash exec ~/Bansuri/scripts/system-menu
+
 
     # Start your launcher
     # bindsym $mod+d exec $menu
@@ -218,6 +221,7 @@ bar {
     swaybar_command waybar
 }
 
+for_window [floating] resize set 50 ppt 50 ppt
 for_window [title="Picture-in-Picture"] floating enable
 for_window [app_id="pavucontrol"] floating enable
 for_window [app_id="blueman-manager"] floating enable
@@ -225,6 +229,12 @@ for_window [window_role="pop-up"] floating enable
 for_window [window_role="dialog"] floating enable
 for_window [title="Authentication Required"] floating enable
 for_window [app_id="rofi"] floating enable
+
+for_window [title="^sysmenu-.*"] {
+    floating enable
+    resize set width 1000 px height 700 px
+    move position center
+}
 
 for_window [floating] border normal 2
 for_window {
