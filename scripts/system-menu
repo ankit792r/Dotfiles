@@ -1,3 +1,37 @@
 #!/bin/bash
 
+MENU="󰖩  WiFi
+  Bluetooth
+󰕾  Audio
+󰄧  Services
+󰍛  Processes
+󰊠  Journal
+  System Info"
+
+CHOICE=$(echo "$MENU" | rofi -no-show-icons -dmenu -p "System" -theme-str 'window { width: 12em; }')
+
+case "$CHOICE" in
+    *WiFi)
+        kitty --title "sysmenu-wifi" nmtui
+        ;;
+    *Bluetooth)
+        kitty --title "sysmenu-bt" bluetoothctl
+        ;;
+      *Audio)
+        pavucontrol
+        ;;
+    *Services)
+        kitty --title "sysmenu-services" bash -c \
+            "systemctl --type=service | less"
+        ;;
+    *Processes*)
+        kitty --title "sysmenu-btop" htop
+        ;;
+    *Journal)
+        kitty --title "sysmenu-journal" journalctl -xe
+        ;;
+    *System\ Info)
+        kitty --title "sysmenu-info" fastfetch
+        ;;
+esac
 

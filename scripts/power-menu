@@ -2,7 +2,7 @@
 
 POWER_MENU="  Lock\n󰿅  Logout\n  Reboot\n  Suspend\n  Power Off"
 
-CHOICE=$(echo -e "$POWER_MENU" | rofi -dmenu -p "Power" -lines 4)
+CHOICE=$(echo -e "$POWER_MENU" | rofi -no-show-icons -lines 5 -dmenu -p "Power" -theme-str 'window { width: 12em; }')
 
 case "$CHOICE" in
 *Lock)
