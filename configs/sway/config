@@ -39,6 +39,11 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id cliphist store
 exec --no-startup-id udiskie
 
+exec --no-startup-id systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+exec --no-startup-id dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+exec --no-startup-id /usr/lib/xdg-desktop-portal-wlr &
+exec --no-startup-id /usr/lib/xdg-desktop-portal
+
 ### Input configuration
 # Get the names of inputs by running: swaymsg -t get_inputs
   input "2:7:SynPS/2_Synaptics_TouchPad" {
@@ -47,11 +52,17 @@ exec --no-startup-id udiskie
       natural_scroll enabled
       middle_emulation enabled
   }
+
+input * {
+  repeat_delay 200
+  repeat_rate 50
+}
+
 #
 ### Key bindings
     bindsym $mod+Return exec $term
-    bindsym $mod+Shift+Return exec prime-run $term
-    bindsym $mod+Shift+f exec prime-run $browser
+    bindsym $mod+Shift+Return exec $term
+    bindsym $mod+Shift+f exec $browser
 
     bindsym $mod+x kill
     bindsym $mod+Shift+z exec slurp | grim -g - - | wl-copy
@@ -78,13 +89,6 @@ exec --no-startup-id udiskie
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
     bindsym $mod+Alt+L exec pkill hyprlock || hyprlock
-
-input * {
-    repeat_delay 200       
-    repeat_rate 50         
-}
-
-
 #
 # Moving around:
 #
@@ -243,6 +247,9 @@ for_window {
   [title="game-*"] floating enable, resize set 1920 1080
   [title="app-*"] floating enable, resize set 1920 1080
 }
+
+titlebar_padding 12 2
+titlebar_border_thickness 2
 
 # default_border pixel 2
 default_floating_border normal 2
