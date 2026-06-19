@@ -1,3 +1,13 @@
+@define-color bg #191724;
+@define-color bg-hover #1f1d2e;
+
+@define-color fg #c0caf4;
+@define-color muted #6e6a86;
+@define-color separator #403d52;
+
+@define-color accent #286983;
+@define-color warning #b4637a;
+
 * {
   border: none;
   border-radius: 0;
@@ -8,8 +18,8 @@
 }
 
 window#waybar {
-  background-color: #191724;
-  color:  #c0caf5;
+  background-color: @bg;
+  color: @fg;
   transition-property: background-color;
   transition-duration: 0.5s;
 }
@@ -26,8 +36,8 @@ button {
 }
 
 button:hover {
-  background-color: #1f1d2e;
-  color: #c0caf5;
+  background-color: @bg-hover;
+  color: @fg;
 }
 
 #workspaces {
@@ -37,29 +47,26 @@ button:hover {
 #workspaces button {
   padding: 0 4px;
   background: none;
-  color: #c0caf5;
+  color: @fg;
 }
 
-#workspaces button.active {
-  border-bottom: 2px solid #c0caf5;
-}
-
+#workspaces button.active,
 #workspaces button.focused {
-  border-bottom: 2px solid #c0caf5;
+  border-bottom: 2px solid @fg;
 }
 
 #workspaces button.urgent {
-  border-bottom: 2px solid #b4637a;
+  border-bottom: 2px solid @warning;
 }
 
 #window {
   padding: 0 6px;
-  color: #c0caf5;
+  color: @fg;
 }
 
 #custom-separator {
-    color: #6e6a86;
-    padding: 0 0px;
+  color: @muted;
+  padding: 0;
 }
 
 #clock,
@@ -74,40 +81,29 @@ button:hover {
 #load,
 #backlight,
 #pulseaudio {
-  padding: 0 6px;
-  color: #c0caf5;
+  color: @fg;
 }
 
 #battery.charging,
 #battery.plugged {
-  color: #286983;
-  /* background-color: #286983; */
-  /* color: #c0caf5; */
+  color: @accent;
 }
 
 #battery.critical:not(.charging),
 #battery.warning:not(.charging) {
-  color: #b4637a;
-  /* background-color: #b4637a; */
-  /* color: #c0caf5; */
+  color: @warning;
 }
 
 #temperature.critical {
-  color: #b4637a;
-  /* background-color: #b4637a; */
-  /* color: #c0caf5; */
+  color: @warning;
 }
 
 #network.disconnected {
-  color: #b4637a;
-  /* background-color: #b4637a; */
-  /* color: #c0caf5; */
+  color: @warning;
 }
 
 #network.disabled {
-  background-color: #b4637a;
-  /* background-color: #b4637a; */
-  /* color: #c0caf5; */
+  background-color: @warning;
 }
 
 #tray {
@@ -117,7 +113,18 @@ button:hover {
 }
 
 #tray > .needs-attention {
-  /* color: #b4637a; */
-  border-bottom-color: #b4637a;
+  border-bottom-color: @warning;
 }
+
+#waybar > box:nth-child(2) > box:nth-child(3) > * > label {
+  padding: 0 6px;
+}
+
+/* Solid separator between modules */
+/* #waybar > box:nth-child(2) > box:nth-child(3) > *:not(:first-child) > label { */
+/*   background-image: linear-gradient(@separator, @separator); */
+/*   background-size: 2px 1em; */
+/*   background-position: left center; */
+/*   background-repeat: no-repeat; */
+/* } */
 
