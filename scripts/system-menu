@@ -5,8 +5,9 @@ MENU="󰖩  WiFi
 󰕾  Audio
 󰄧  Services
 󰍛  Processes
-󰊠  Journal
-  System Info"
+  System Info
+  Install Package
+󰆴  Remove Package"
 
 CHOICE=$(echo "$MENU" | rofi -no-show-icons -dmenu -p "System" -theme-str 'window { width: 12em; }')
 
@@ -27,11 +28,14 @@ case "$CHOICE" in
     *Processes*)
         kitty --title "sysmenu-btop" htop
         ;;
-    *Journal)
-        kitty --title "sysmenu-journal" journalctl -xe
-        ;;
     *System\ Info)
         kitty --title "sysmenu-info" fastfetch
+        ;;
+    *Install\ Package)
+        kitty --title "sysmenu-install" install-package
+        ;;
+    *Remove\ Package)
+        kitty --title "sysmenu-remove" remove-package
         ;;
 esac
 
