@@ -4,9 +4,9 @@ return {
     'saghen/blink.lib',
     'rafamadriz/friendly-snippets',
   },
-  build = function()
-    require('blink.cmp').build():pwait()
-  end,
+  -- build = function()
+  --   require('blink.cmp').build():pwait()
+  -- end,
   opts = {
     keymap = {
       preset = "enter",
@@ -35,6 +35,6 @@ return {
 
     },
     sources = { default = { 'lsp', 'path', 'snippets', 'buffer' } },
-    fuzzy = { implementation = "rust" }
+    fuzzy = { implementation = "lua" }
   },
 }
