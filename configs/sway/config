@@ -209,10 +209,11 @@ bindsym $mod+z mode "special"
     bindsym Print exec grim
 
 
-client.focused   #403d52 #403d52 #e0def4 #286983 #403d52
-client.unfocused #191724 #191724 #e0def4 #286983 #191724
-client.focused_inactive #191724 #191724 #e0def4 #286983 #191724
+include ./colors.conf
 
+client.focused   $surface0 $surface0 $text $teal $surface0
+client.unfocused $base $base $text $teal $base
+client.focused_inactive $base $base $text $teal $base
 
 bar {
     position bottom
