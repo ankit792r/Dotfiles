@@ -3,6 +3,7 @@
   "position": "bottom",
   "height": 28,
   "modules-left": [
+    "sway/scratchpad",
     "sway/workspaces",
     "sway/mode"
     // "niri/workspaces",
