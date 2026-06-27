@@ -60,6 +60,16 @@ exec --no-startup-id /usr/lib/xdg-desktop-portal
     bindsym $mod+x kill
     bindsym $mod+Shift+z exec slurp | grim -g - - | wl-copy
     bindsym $mod+Return exec $term
+    bindsym $mod+Shift+Return exec kitty --class="termfloat"
+
+    # switch between current and last workspace #
+    bindsym $mod+Slash workspace back_and_forth
+
+    # Switch to prev/next workspace #
+    # comma(,) period(.)
+    bindsym $mod+period workspace next
+    bindsym $mod+comma workspace prev
+
 
     # this are comming from uwsm env
     bindsym $mod+Backspace exec power-menu
@@ -68,6 +78,9 @@ exec --no-startup-id /usr/lib/xdg-desktop-portal
     # Start your launcher
     # bindsym $mod+d exec $menu
     bindsym $mod+d exec --no-startup-id $menu
+
+    bindsym $mod+bracketleft  exec --no-startup-id   grimshot --notify  save area ~/Pictures/$(date "+%Y-%m-%d"T"%H:%M:%S_no_watermark").png
+    bindsym $mod+bracketright exec --no-startup-id   grimshot --notify  copy area 
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -138,10 +151,10 @@ exec --no-startup-id /usr/lib/xdg-desktop-portal
 # Layout stuff:
 #
     # You can "split" the current object of your focus with
-    # $mod+b or $mod+v, for horizontal and vertical splits
+    # $mod+semicolon or $mod+apostrophe, for horizontal and vertical splits
     # respectively.
-    bindsym $mod+b splith
-    bindsym $mod+v splitv
+    bindsym $mod+semicolon splitv
+    bindsym $mod+apostrophe splith
 
     # Switch the current container between different layout styles
     bindsym $mod+s layout stacking
@@ -158,31 +171,42 @@ exec --no-startup-id /usr/lib/xdg-desktop-portal
 #
 # Scratchpad:
 #
-    # Sway has a "scratchpad", which is a bag of holding for windows.
-    # You can send windows there and get them back later.
-
-    # Move the currently focused window to the scratchpad
-    bindsym $mod+Shift+minus move scratchpad
-
-    # Show the next scratchpad window or hide the focused scratchpad window.
-    # If there are multiple scratchpad windows, this command cycles through them.
-    bindsym $mod+minus scratchpad show
+    ## hide | show window(minus is "-" and plus is "=".)
+    bindsym $mod+minus move scratchpad
+    bindsym $mod+equal scratchpad show
 #
 # Resizing containers:
 #
+bindsym $mod+r mode "resize"
 mode "resize" {
-    bindsym $right resize shrink width 20px
-    bindsym $up resize grow height 20px
-    bindsym $down resize shrink height 20px
-    bindsym $left resize grow width 20px
+    bindsym $left resize shrink width 10px
+    bindsym $up resize grow height 10px
+    bindsym $down resize shrink height 10px
+    bindsym $right resize grow width 10px
 
-    bindsym $mod+r mode "default"
+    # Ditto, with arrow keys
+    bindsym Left resize shrink width 10px
+    bindsym Up resize grow height 10px
+    bindsym Down resize shrink height 10px
+    bindsym Right resize grow width 10px
+
+    # Return to default mode
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
 
-bindsym $mod+r mode "resize"
+## Better to resize window
+bindsym Shift+Ctrl+h             resize shrink width  5 px or 5 ppt
+bindsym Shift+Ctrl+k             resize grow   height 5 px or 5 ppt
+bindsym Shift+Ctrl+j             resize shrink height 5 px or 5 ppt
+bindsym Shift+Ctrl+l             resize grow   width  5 px or 5 ppt
+bindsym Shift+Ctrl+Left          resize shrink width  5 px or 5 ppt
+bindsym Shift+Ctrl+Up            resize grow   height 5 px or 5 ppt
+bindsym Shift+Ctrl+Down          resize shrink height 5 px or 5 ppt
+bindsym Shift+Ctrl+Right         resize grow   width  5 px or 5 ppt
 
+
+bindsym $mod+z mode "special"
 mode "special" {
   bindsym c exec wl-color-picker clipboard; mode "default" 
   bindsym s exec slurp | grim -g - - | wl-copy; mode "default"
@@ -191,8 +215,6 @@ mode "special" {
   bindsym Return mode "default"
   bindsym Escape mode "default"
 }
-
-bindsym $mod+z mode "special"
 
 #
 # Utilities:
@@ -205,60 +227,114 @@ bindsym $mod+z mode "special"
     # Special keys to adjust brightness via brightnessctl
     bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
     bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
+
+    bindsym --locked XF86AudioPlay exec playerctl play-pause
+    bindsym --locked XF86AudioNext exec playerctl next
+    bindsym --locked XF86AudioPrev exec playerctl previous
     # Special key to take a screenshot with grim
     bindsym Print exec grim
 
 
 include ./colors.conf
 
-client.focused   $surface0 $surface0 $text $teal $surface0
-client.unfocused $base $base $text $teal $base
-client.focused_inactive $base $base $text $teal $base
+#----------------------------------------#
+# window colours: border background text #
+#----------------------------------------#
+client.focused                $surface0 $surface0 $text $teal $surface0
+client.unfocused              $base $base $text $teal $base
+client.focused_inactive       $base $base $text $teal $base
 
 bar {
     position bottom
     swaybar_command waybar
 }
 
-for_window [floating] resize set 50 ppt 50 ppt
-for_window [title="Picture-in-Picture"] floating enable
-for_window [app_id="pavucontrol"] floating enable
-for_window [app_id="blueman-manager"] floating enable
-for_window [window_role="pop-up"] floating enable
-for_window [window_role="dialog"] floating enable
-for_window [title="Authentication Required"] floating enable
-for_window [app_id="rofi"] floating enable
 
-for_window [title="^sysmenu-.*"] {
-    floating enable
-    resize set width 1000 px height 700 px
-    move position center
-}
+#------------------------------#
+# Always float certain windows #
+#------------------------------#
+#swaymsg -t get_tree | grep app_id
+    for_window [app_id="pop-up"]                     floating enable
+    for_window [app_id="bubble"]                     floating enable 
+    for_window [app_id="task_dialog"]                floating enable
+    for_window [app_id="Preferences"]                floating enable
+    for_window [app_id="dialog"]                     floating enable 
+    for_window [app_id="menu"]                       floating enable
+    for_window [app_id="Organizer"]                  floating enable
+    for_window [app_id="About"]                      floating enable
+    for_window [app_id="toolbox"]                    floating enable
+    for_window [app_id="page-info"]                  floating enable	
+    for_window [app_id="webconsole"]                 floating enable
+    for_window [app_id="Authy"]                      floating enable
+    for_window [app_id="termfloat"]                  floating enable
+    for_window [app_id="termfloat"]                  resize set height 540
+    for_window [app_id="termfloat"]                  resize set width 960
+    for_window [app_id="mpv"]                        floating enable 
+    for_window [app_id="mpv"]                        resize set height 540
+    for_window [app_id="mpv"]                        resize set width 960
+    for_window [app_id="Nautilus"]                   floating enable 
+    for_window [app_id="Nautilus"]                   resize set height 540
+    for_window [app_id="Nautilus"]                   resize set width 960
+    
+    for_window [floating] resize set 50 ppt 50 ppt
+    for_window [title="Picture-in-Picture"] floating enable
+    for_window [app_id="pavucontrol"] floating enable
+    for_window [app_id="blueman-manager"] floating enable
+    for_window [window_role="pop-up"] floating enable
+    for_window [window_role="dialog"] floating enable
+    for_window [title="Authentication Required"] floating enable
+    for_window [app_id="rofi"] floating enable
 
-for_window [floating] border normal 2
-for_window {
-  [app_id="pavucontrol"] floating enable
-  [title="game-*"] floating enable, resize set 1920 1080
-  [title="app-*"] floating enable, resize set 1920 1080
-}
+    for_window [title="^sysmenu-.*"] {
+        floating enable
+        resize set width 1000 px height 700 px
+        move position center
+    }
 
+    for_window [floating] border pixel 3
+    for_window {
+      [app_id="pavucontrol"] floating enable
+      [title="game-*"] floating enable, resize set 1920 1080
+      [title="app-*"] floating enable, resize set 1920 1080
+    }
+
+
+#------------------------------------------#
+# Placing software in a specific workspace #
+#------------------------------------------#
+    #assign [app_id="telegram"]: workspace num  ber 10
+
+
+#----------------#
+# set gtk+ theme #
+#----------------#
+    set $gnome-schema org.gnome.desktop.interface
+    exec_always {
+        gsettings set $gnome-schema gtk-theme 'Catppuccin'
+        gsettings set $gnome-schema icon-theme 'Papirus-Dark'
+        gsettings set $gnome-schema cursor-theme 'Catppuccin-cursor'
+        gsettings set $gnome-schema font-name $font
+    }
+
+
+#-----------------------------#
+#           Misc              #
+#-----------------------------#
+focus_follows_mouse no
+default_border pixel 3
+default_floating_border pixel 3
+gaps inner  5
+gaps outer  0
+
+# Activate smart borders (always)
 titlebar_padding 12 2
 titlebar_border_thickness 2
-
-# default_border pixel 2
-default_floating_border normal 2
-# hide_edge_borders smart
 
 workspace_layout default
 default_orientation auto
 
-focus_follows_mouse yes
 mouse_warping output
 force_display_urgency_hint 500 ms
-# floating_minimum_size 400 x 300
-# floating_maximum_size -1 x -1
-tiling_drag enable
 workspace_auto_back_and_forth no
-
 
 include /etc/sway/config.d/*
