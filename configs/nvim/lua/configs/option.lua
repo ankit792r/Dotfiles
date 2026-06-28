@@ -35,6 +35,12 @@ vim.opt.signcolumn = "yes"
 
 vim.opt.clipboard = "unnamedplus"
 
+vim.opt.swapfile = false
+vim.opt.backup = false
+-- vim.opt.undodir = true
+-- vim.opt.guicursor = ""
+vim.opt.termguicolors = true
+
 -- Splits
 vim.opt.splitright = true
 vim.opt.splitbelow = true

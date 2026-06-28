@@ -37,6 +37,9 @@ return {
 			map("n", "<leader>rr", vim.lsp.buf.rename, "Rename reference")
       map("i", "<C-k>", vim.lsp.buf.signature_help, "Signature Help")
 
+      vim.keymap.set("n", "df", vim.diagnostic.open_float, { desc = "Show line diagnostics" })
+      vim.diagnostic.config({ virtual_text = true })
+
       -- Actions & Refactoring
       map("n", "<leader>ca", vim.lsp.buf.code_action, "Code Action")
       map("n", "<leader>cr", vim.lsp.buf.rename, "Rename")
