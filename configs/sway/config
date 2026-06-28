@@ -1,7 +1,3 @@
-# Sway config for ME
-
-# variables
-set $alt Mod1
 set $mod Mod4
 
 set $left h
@@ -10,12 +6,11 @@ set $up k
 set $right l
 
 set $term kitty
-set $browser firefox
 set $menu rofi -show drun
 
 font pango:Iosevka Nerd Font 12
 
-# Outputs
+### Output configuration
 # get the names of outputs by running: swaymsg -t get_outputs
 output * mode 1920x1080@144.000Hz pos 2560 0 scale 1
 # output DP-2 mode 2560x1440@100Hz pos 0 0 scale 1
@@ -23,15 +18,8 @@ output * bg ~/Downloads/wallhaven-1jk6x3_1920x1080.png fill
 output * allow_tearing yes
 output * max_render_time off
 
-
-# Idle configuration
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
-# exec swayidle -w \
-#          timeout 3000 'swaylock -f -c 000000' \
-#          timeout 6000 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-#          before-sleep 'swaylock -f -c 000000'
+### Autostart configuration
+exec --no-startup-id waybar
 exec --no-startup-id hypridle
 exec --no-startup-id mako
 exec --no-startup-id wlsunset -t 5000
@@ -47,40 +35,35 @@ exec --no-startup-id /usr/lib/xdg-desktop-portal
 ### Input configuration
 # Get the names of inputs by running: swaymsg -t get_inputs
   input * {
-      dwt enabled
       tap enabled
       natural_scroll enabled
-      middle_emulation enabled
       repeat_delay 200
       repeat_rate 50
   }
 
-#
 ### Key bindings
-    bindsym $mod+q kill
-    bindsym $mod+Shift+z exec slurp | grim -g - - | wl-copy
+#
+# Basics:
+#
+    # Kill focused window
+    bindsym $mod+Q kill
+
+    # Start a terminal
     bindsym $mod+Return exec $term
-    bindsym $mod+Shift+Return exec kitty --class="termfloat"
 
     # switch between current and last workspace #
     bindsym $mod+Slash workspace back_and_forth
 
-    # Switch to prev/next workspace #
-    # comma(,) period(.)
+    # Switch to prev/next workspace comma(,) period(.)
     bindsym $mod+period workspace next
     bindsym $mod+comma workspace prev
 
+    # Start your launcher
+    bindsym $mod+d exec $menu
 
     # this are comming from uwsm env
     bindsym $mod+Backspace exec power-menu
     bindsym $mod+Backslash exec system-menu
-
-    # Start your launcher
-    # bindsym $mod+d exec $menu
-    bindsym $mod+d exec --no-startup-id $menu
-
-    bindsym $mod+bracketleft  exec --no-startup-id   grimshot --notify  save area ~/Pictures/$(date "+%Y-%m-%d"T"%H:%M:%S_no_watermark").png
-    bindsym $mod+bracketright exec --no-startup-id   grimshot --notify  copy area 
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -94,6 +77,8 @@ exec --no-startup-id /usr/lib/xdg-desktop-portal
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+
+    # Lock screen with hyprlock
     bindsym $mod+Alt+L exec pkill hyprlock || hyprlock
 #
 # Moving around:
@@ -161,8 +146,13 @@ exec --no-startup-id /usr/lib/xdg-desktop-portal
     bindsym $mod+w layout tabbed
     bindsym $mod+e layout toggle split
 
+    # Make the current focus fullscreen
     bindsym $mod+f fullscreen
+
+    # Toggle the current focus between tiling and floating mode
     bindsym $mod+Shift+space floating toggle
+
+    # Swap focus between the tiling area and the floating area
     bindsym $mod+space focus mode_toggle
 
     # Move focus to the parent container
@@ -171,8 +161,14 @@ exec --no-startup-id /usr/lib/xdg-desktop-portal
 #
 # Scratchpad:
 #
-    ## hide | show window(minus is "-" and plus is "=".)
+    # Sway has a "scratchpad", which is a bag of holding for windows.
+    # You can send windows there and get them back later.
+
+    # Move the currently focused window to the scratchpad
     bindsym $mod+minus move scratchpad
+
+    # Show the next scratchpad window or hide the focused scratchpad window.
+    # If there are multiple scratchpad windows, this command cycles through them.
     bindsym $mod+equal scratchpad show
 #
 # Resizing containers:
@@ -194,7 +190,6 @@ mode "resize" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-
 ## Better to resize window
 bindsym Shift+Ctrl+h             resize shrink width  5 px or 5 ppt
 bindsym Shift+Ctrl+k             resize grow   height 5 px or 5 ppt
@@ -204,18 +199,6 @@ bindsym Shift+Ctrl+Left          resize shrink width  5 px or 5 ppt
 bindsym Shift+Ctrl+Up            resize grow   height 5 px or 5 ppt
 bindsym Shift+Ctrl+Down          resize shrink height 5 px or 5 ppt
 bindsym Shift+Ctrl+Right         resize grow   width  5 px or 5 ppt
-
-
-bindsym $mod+z mode "special"
-mode "special" {
-  bindsym c exec wl-color-picker clipboard; mode "default" 
-  bindsym s exec slurp | grim -g - - | wl-copy; mode "default"
-  bindsym a exec grim -g "$(slurp -o -f '%x,%y %wx%h')" "$HOME/screenshot-$(date +%Y%m%d-%H%M%S).png"; mode "default"
-  bindsym Shift+s grim -g "$(slurp)" "$HOME/screenshot-$(date +%Y%m%d-%H%M%S).png"; mode "default"
-  bindsym Return mode "default"
-  bindsym Escape mode "default"
-}
-
 #
 # Utilities:
 #
@@ -224,36 +207,23 @@ mode "special" {
     bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
     bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
     bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
+
+    # Special keys to control media via playerctl
+    bindsym --locked XF86AudioPlay exec playerctl play-pause
+    bindsym --locked XF86AudioPause exec playerctl play-pause
+    bindsym --locked XF86AudioPrev exec playerctl previous
+    bindsym --locked XF86AudioNext exec playerctl next
+    bindsym --locked XF86AudioStop exec playerctl stop
+
     # Special keys to adjust brightness via brightnessctl
     bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
     bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
 
-    bindsym --locked XF86AudioPlay exec playerctl play-pause
-    bindsym --locked XF86AudioNext exec playerctl next
-    bindsym --locked XF86AudioPrev exec playerctl previous
     # Special key to take a screenshot with grim
     bindsym Print exec grim
-
-
-include ./colors.conf
-
-#----------------------------------------#
-# window colours: border background text #
-#----------------------------------------#
-client.focused                $border $border $base $teal $border
-client.unfocused              $base $base $text $teal $base
-client.focused_inactive       $base $base $text $teal $base
-
-bar {
-    position bottom
-    swaybar_command waybar
-}
-
-
-#------------------------------#
-# Always float certain windows #
-#------------------------------#
-#swaymsg -t get_tree | grep app_id 
+#
+# floating
+#
     for_window [floating] resize set 50 ppt 50 ppt
     for_window [title="Picture-in-Picture"] floating enable
     for_window [app_id="pavucontrol"] floating enable
@@ -275,23 +245,12 @@ bar {
       [title="game-*"] floating enable, resize set 1920 1080
       [title="app-*"] floating enable, resize set 1920 1080
     }
+#
+# Extra
+#
+    focus_follows_mouse no
+    workspace_auto_back_and_forth no
 
 
-focus_follows_mouse no
-default_border normal 2
-default_floating_border pixel 3
-gaps inner  5
-gaps outer  0
-
-# Activate smart borders (always)
-titlebar_padding 12 2
-titlebar_border_thickness 2
-
-workspace_layout default
-default_orientation auto
-
-mouse_warping output
-force_display_urgency_hint 500 ms
-workspace_auto_back_and_forth no
 
 include /etc/sway/config.d/*
