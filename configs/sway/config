@@ -245,12 +245,24 @@ bindsym Shift+Ctrl+Right         resize grow   width  5 px or 5 ppt
       [title="game-*"] floating enable, resize set 1920 1080
       [title="app-*"] floating enable, resize set 1920 1080
     }
+
+## Window decorations
+# class                 border    background  text      indicator   child_border
+client.focused          #585B70   #585B70     #CDD6F4   #F5C2E7     #585B70
+client.focused_inactive #45475A   #45475A     #CDD6F4   #6C7086     #45475A
+client.unfocused        #313244   #313244     #A6ADC8   #6C7086     #313244
+client.urgent           #F38BA8   #F38BA8     #1E1E2E   #F38BA8     #F38BA8
+client.placeholder      #181825   #181825     #6C7086   #181825     #181825
+
+client.background       #11111B
+
 #
 # Extra
 #
     focus_follows_mouse no
     workspace_auto_back_and_forth no
-
+    default_border pixel 1
+    default_floating_border pixel 1
 
 
 include /etc/sway/config.d/*
