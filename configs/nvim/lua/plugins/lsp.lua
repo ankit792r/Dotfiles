@@ -19,7 +19,7 @@ return {
     lazy = false,
     opts = function(_, opts)
       opts.diagnostics = opts.diagnostics or {}
-      opts.diagnostics.virtual_text = false -- Keeping your preference
+      opts.diagnostics.virtual_text = false
       opts.diagnostics.severity_sort = true
     end,
     config = function()
@@ -36,9 +36,6 @@ return {
       map("n", "gy", vim.lsp.buf.type_definition, "Type Definition")
 			map("n", "<leader>rr", vim.lsp.buf.rename, "Rename reference")
       map("i", "<C-k>", vim.lsp.buf.signature_help, "Signature Help")
-
-      vim.keymap.set("n", "df", vim.diagnostic.open_float, { desc = "Show line diagnostics" })
-      vim.diagnostic.config({ virtual_text = true })
 
       -- Actions & Refactoring
       map("n", "<leader>ca", vim.lsp.buf.code_action, "Code Action")
