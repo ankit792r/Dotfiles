@@ -28,7 +28,7 @@ style = "Bold Italic"
 padding = { x = 8, y = 8 }
 decorations = "None"
 dynamic_padding = true
-opacity = 0.85
+opacity = 0.80
 
 [[keyboard.bindings]]
 key = "Insert"
