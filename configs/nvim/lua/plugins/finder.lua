@@ -1,4 +1,4 @@
-return {
+local fin = {
   "ibhagwan/fzf-lua",
   config = function()
     local fzf = require("fzf-lua")
