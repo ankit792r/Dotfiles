@@ -261,8 +261,8 @@ client.background       #11111B
 #
     focus_follows_mouse no
     workspace_auto_back_and_forth no
-    default_border pixel 1
-    default_floating_border pixel 1
+    default_border pixel 2
+    default_floating_border pixel 2
 
 
 include /etc/sway/config.d/*
