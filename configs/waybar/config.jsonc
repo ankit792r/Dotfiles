@@ -3,9 +3,10 @@
   "position": "bottom",
   "height": 28,
   "modules-left": [
-    "sway/scratchpad",
-    "sway/workspaces",
-    "sway/mode"
+    // "sway/scratchpad",
+    "hyprland/workspaces",
+    "hyprland/window"
+    // "sway/mode"
     // "niri/workspaces",
     // "niri/window"
   ],
