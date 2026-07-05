@@ -5,7 +5,7 @@ set $down j
 set $up k
 set $right l
 
-set $term alacritty
+set $term kitty
 set $menu rofi -show drun
 
 font pango:Iosevka Nerd Font 12

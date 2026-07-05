@@ -15,9 +15,10 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("cliphist store")
 	hl.exec_cmd("udiskie")
 	hl.exec_cmd("/usr/lib/xdg-desktop-portal")
-	hl.exec_cmd("swaybg -i ~/Dotfiles/images/wallpapers/himalayas.jpg -m fill")
+	hl.exec_cmd("swaybg -i ~/Dotfiles/defaults/nature.png -m fill")
 	hl.exec_cmd("dbus-update-activation-environment --systemd --all")
 	hl.exec_cmd("systemctl --user import-environment $(env | cut -d'=' -f 1)")
+	hl.exec_cmd("systemctl --user start hyprpolkitagent")
 end)
 
 hl.env("XCURSOR_SIZE", "24")
@@ -30,6 +31,7 @@ hl.env("MOZ_ENABLE_WAYLAND", "1")
 hl.env("ELECTRON_OZONE_PLATFORM_HINT", "wayland")
 hl.env("OZONE_PLATFORM", "wayland")
 hl.env("XDG_SESSION_TYPE", "wayland")
+hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
 
 -- Allow better support for screen sharing (Google Meet, Discord, etc).
 hl.env("XDG_CURRENT_DESKTOP", "Hyprland")
@@ -169,19 +171,25 @@ hl.config({
 	},
 })
 
-local mainMod = "SUPER" -- Sets "Windows" key as main modifier
+local mainMod = "SUPER"
+local secondMod = "SUPER + SHIFT"
+
 hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(terminal))
-hl.bind(mainMod .. " + X", hl.dsp.window.close())
+hl.bind(mainMod .. " + Space", hl.dsp.exec_cmd(menu))
+hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 
 hl.bind(
 	mainMod .. " + M",
 	hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'")
 )
-hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mainMod .. " + Space", hl.dsp.exec_cmd(menu))
-hl.bind(mainMod .. " + B", hl.dsp.layout("togglesplit"))
-hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "fullscreen" }))
 hl.bind(mainMod .. " + T", hl.dsp.window.float({ action = "toggle" }))
+hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "maximized" }))
+hl.bind(secondMod .. " + F", hl.dsp.window.fullscreen({ mode = "fullscreen" }))
+
+-- hl.bind(mainMod .. " + B", hl.dsp.layout("togglesplit"))
+-- hl.bind(mainMod .. " + S", hl.dsp.layout("scrolling"))
+-- hl.bind(mainMod .. " + W", hl.dsp.layout("master"))
+-- hl.bind(mainMod .. " + E", hl.dsp.layout("dwindle"))
 
 hl.bind(mainMod .. " + Backspace", hl.dsp.exec_cmd("power-menu"))
 hl.bind(mainMod .. " + Backslash", hl.dsp.exec_cmd("system-menu"))
@@ -200,16 +208,16 @@ hl.bind(mainMod .. " + K", hl.dsp.focus({ direction = "up" }))
 hl.bind(mainMod .. " + J", hl.dsp.focus({ direction = "down" }))
 
 -- Move focused window
-hl.bind(mainMod .. " + SHIFT + H", hl.dsp.window.move({ direction = "l" }))
-hl.bind(mainMod .. " + SHIFT + J", hl.dsp.window.move({ direction = "d" }))
-hl.bind(mainMod .. " + SHIFT + K", hl.dsp.window.move({ direction = "u" }))
-hl.bind(mainMod .. " + SHIFT + L", hl.dsp.window.move({ direction = "r" }))
+hl.bind(secondMod .. " + H", hl.dsp.window.move({ direction = "l" }))
+hl.bind(secondMod .. " + J", hl.dsp.window.move({ direction = "d" }))
+hl.bind(secondMod .. " + K", hl.dsp.window.move({ direction = "u" }))
+hl.bind(secondMod .. " + L", hl.dsp.window.move({ direction = "r" }))
 
 -- Arrow key variants
-hl.bind(mainMod .. " + SHIFT + LEFT", hl.dsp.window.move({ direction = "l" }))
-hl.bind(mainMod .. " + SHIFT + DOWN", hl.dsp.window.move({ direction = "d" }))
-hl.bind(mainMod .. " + SHIFT + UP", hl.dsp.window.move({ direction = "u" }))
-hl.bind(mainMod .. " + SHIFT + RIGHT", hl.dsp.window.move({ direction = "r" }))
+hl.bind(secondMod .. " + LEFT", hl.dsp.window.move({ direction = "l" }))
+hl.bind(secondMod .. " + DOWN", hl.dsp.window.move({ direction = "d" }))
+hl.bind(secondMod .. " + UP", hl.dsp.window.move({ direction = "u" }))
+hl.bind(secondMod .. " + RIGHT", hl.dsp.window.move({ direction = "r" }))
 
 -- Switch to workspaces
 hl.bind(mainMod .. " + U", hl.dsp.focus({ workspace = 1 }))
@@ -222,14 +230,14 @@ hl.bind(mainMod .. " + 9", hl.dsp.focus({ workspace = 7 }))
 hl.bind(mainMod .. " + 0", hl.dsp.focus({ workspace = 8 }))
 
 -- Move focused window to workspace
-hl.bind(mainMod .. " + SHIFT + U", hl.dsp.window.move({ workspace = 1 }))
-hl.bind(mainMod .. " + SHIFT + I", hl.dsp.window.move({ workspace = 2 }))
-hl.bind(mainMod .. " + SHIFT + O", hl.dsp.window.move({ workspace = 3 }))
-hl.bind(mainMod .. " + SHIFT + P", hl.dsp.window.move({ workspace = 4 }))
-hl.bind(mainMod .. " + SHIFT + 7", hl.dsp.window.move({ workspace = 5 }))
-hl.bind(mainMod .. " + SHIFT + 8", hl.dsp.window.move({ workspace = 6 }))
-hl.bind(mainMod .. " + SHIFT + 9", hl.dsp.window.move({ workspace = 7 }))
-hl.bind(mainMod .. " + SHIFT + 0", hl.dsp.window.move({ workspace = 8 }))
+hl.bind(secondMod .. " + U", hl.dsp.window.move({ workspace = 1 }))
+hl.bind(secondMod .. " + I", hl.dsp.window.move({ workspace = 2 }))
+hl.bind(secondMod .. " + O", hl.dsp.window.move({ workspace = 3 }))
+hl.bind(secondMod .. " + P", hl.dsp.window.move({ workspace = 4 }))
+hl.bind(secondMod .. " + 7", hl.dsp.window.move({ workspace = 5 }))
+hl.bind(secondMod .. " + 8", hl.dsp.window.move({ workspace = 6 }))
+hl.bind(secondMod .. " + 9", hl.dsp.window.move({ workspace = 7 }))
+hl.bind(secondMod .. " + 0", hl.dsp.window.move({ workspace = 8 }))
 
 -- hl.bind(mainMod .. " + .", "Next workspace", hl.dsp.focus({ workspace = "e+1" }))
 -- hl.bind(mainMod .. " + ,+ TAB", "Previous workspace", hl.dsp.focus({ workspace = "e-1" }))
@@ -238,10 +246,10 @@ hl.bind(mainMod .. " + SHIFT + 0", hl.dsp.window.move({ workspace = 8 }))
 hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("scratchpad"))
 hl.bind(mainMod .. " + ALT + S", hl.dsp.window.move({ workspace = "special:scratchpad", follow = false }))
 
-hl.bind(mainMod .. " + SHIFT + H", hl.dsp.window.swap({ direction = "l" }))
-hl.bind(mainMod .. " + SHIFT + L", hl.dsp.window.swap({ direction = "r" }))
-hl.bind(mainMod .. " + SHIFT + K", hl.dsp.window.swap({ direction = "u" }))
-hl.bind(mainMod .. " + SHIFT + J", hl.dsp.window.swap({ direction = "d" }))
+hl.bind(secondMod .. " + H", hl.dsp.window.swap({ direction = "l" }))
+hl.bind(secondMod .. " + L", hl.dsp.window.swap({ direction = "r" }))
+hl.bind(secondMod .. " + K", hl.dsp.window.swap({ direction = "u" }))
+hl.bind(secondMod .. " + J", hl.dsp.window.swap({ direction = "d" }))
 
 -- Scroll through existing workspaces with mainMod + scroll
 hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
@@ -294,26 +302,13 @@ hl.window_rule({
 	no_focus = true,
 })
 
-hl.workspace_rule({
-	workspace = "1",
-	layout = "scrolling",
-	layout_opts = {
-		direction = "right",
-	},
-})
-
-hl.workspace_rule({
-	workspace = "2",
-	layout = "master",
-	layout_opts = {
-		orientation = "left",
-	},
-})
-
-hl.workspace_rule({
-	workspace = "3",
-	layout = "dwindle",
-})
+-- hl.workspace_rule({
+-- 	workspace = "1",
+-- 	layout = "scrolling",
+-- 	layout_opts = {
+-- 		direction = "right",
+-- 	},
+-- })
 
 -- hl.window_rule({
 -- 	name = "firefox in 3",
