@@ -2,23 +2,23 @@ local terminal = "kitty"
 local menu = "rofi -show drun"
 
 hl.monitor({
-  output = "",
-  mode = "preferred",
-  position = "auto",
-  scale = 1,
+	output = "",
+	mode = "preferred",
+	position = "auto",
+	scale = 1,
 })
 
 hl.on("hyprland.start", function()
-  hl.exec_cmd("waybar")
-  hl.exec_cmd("hypridle")
-  hl.exec_cmd("mako")
-  hl.exec_cmd("cliphist store")
-  hl.exec_cmd("udiskie")
-  hl.exec_cmd("/usr/lib/xdg-desktop-portal")
-  hl.exec_cmd("swaybg -i ~/Dotfiles/defaults/nature.png -m fill")
-  hl.exec_cmd("dbus-update-activation-environment --systemd --all")
-  hl.exec_cmd("systemctl --user import-environment $(env | cut -d'=' -f 1)")
-  hl.exec_cmd("systemctl --user start hyprpolkitagent")
+	hl.exec_cmd("waybar")
+	hl.exec_cmd("hypridle")
+	hl.exec_cmd("mako")
+	hl.exec_cmd("cliphist store")
+	hl.exec_cmd("udiskie")
+	hl.exec_cmd("/usr/lib/xdg-desktop-portal")
+	hl.exec_cmd("swaybg -i ~/Dotfiles/defaults/nature.png -m fill")
+	hl.exec_cmd("dbus-update-activation-environment --systemd --all")
+	hl.exec_cmd("systemctl --user import-environment $(env | cut -d'=' -f 1)")
+	hl.exec_cmd("systemctl --user start hyprpolkitagent")
 end)
 
 hl.env("XCURSOR_SIZE", "24")
@@ -37,92 +37,90 @@ hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
 hl.env("XDG_CURRENT_DESKTOP", "Hyprland")
 hl.env("XDG_SESSION_DESKTOP", "Hyprland")
 
-
 local active_border_color = { colors = { "rgba(33ccffee)", "rgba(00ff99ee)" }, angle = 45 }
 local inactive_border_color = "rgba(595959aa)"
 
 hl.config({
-  general = {
-    gaps_in = 5,
-    gaps_out = 10,
-    border_size = 2,
+	general = {
+		gaps_in = 4,
+		gaps_out = 6,
+		border_size = 2,
 
-    col = {
-      active_border = active_border_color,
-      inactive_border = inactive_border_color,
-    },
+		col = {
+			active_border = active_border_color,
+			inactive_border = inactive_border_color,
+		},
 
-    resize_on_border = false,
-    allow_tearing = false,
-    layout = "dwindle",
-  },
+		resize_on_border = false,
+		allow_tearing = false,
+		layout = "dwindle",
+	},
 
-  decoration = {
-    rounding = 0,
-    rounding_power = 0,
+	decoration = {
+		rounding = 0,
+		rounding_power = 0,
 
-    active_opacity = 1.0,
-    inactive_opacity = 1.0,
+		active_opacity = 1.0,
+		inactive_opacity = 1.0,
 
-    shadow = {
-      enabled = true,
-      range = 2,
-      render_power = 3,
-      color = "rgba(1a1a1aee)",
-    },
+		shadow = {
+			enabled = true,
+			range = 2,
+			render_power = 3,
+			color = "rgba(1a1a1aee)",
+		},
 
-    blur = {
-      enabled = true,
-      size = 2,
-      passes = 2,
-      special = true,
-      brightness = 0.60,
-      contrast = 0.75,
-    },
-  },
+		blur = {
+			enabled = true,
+			size = 2,
+			passes = 2,
+			special = true,
+			brightness = 0.60,
+			contrast = 0.75,
+		},
+	},
 
+	group = {
+		col = {
+			border_active = active_border_color,
+			border_inactive = inactive_border_color,
+		},
 
-  group = {
-    col = {
-      border_active = active_border_color,
-      border_inactive = inactive_border_color,
-    },
+		groupbar = {
+			font_size = 12,
+			font_family = "monospace",
+			font_weight_active = "ultraheavy",
+			font_weight_inactive = "normal",
+			indicator_height = 0,
+			indicator_gap = 5,
+			height = 22,
+			gaps_in = 5,
+			gaps_out = 0,
+			text_color = "rgb(ffffff)",
+			text_color_inactive = "rgba(ffffff90)",
+			col = {
+				active = "rgba(00000040)",
+				inactive = "rgba(00000020)",
+			},
+			gradients = true,
+			gradient_rounding = 0,
+			gradient_round_only_edges = false,
+		},
+	},
 
-    groupbar = {
-      font_size = 12,
-      font_family = "monospace",
-      font_weight_active = "ultraheavy",
-      font_weight_inactive = "normal",
-      indicator_height = 0,
-      indicator_gap = 5,
-      height = 22,
-      gaps_in = 5,
-      gaps_out = 0,
-      text_color = "rgb(ffffff)",
-      text_color_inactive = "rgba(ffffff90)",
-      col = {
-        active = "rgba(00000040)",
-        inactive = "rgba(00000020)",
-      },
-      gradients = true,
-      gradient_rounding = 0,
-      gradient_round_only_edges = false,
-    },
-  },
-
-  animations = {
-    enabled = true,
-  },
+	animations = {
+		enabled = true,
+	},
 })
 
 hl.config({
-  xwayland = {
-    force_zero_scaling = true,
-  },
+	xwayland = {
+		force_zero_scaling = true,
+	},
 
-  ecosystem = {
-    no_update_news = true,
-  },
+	ecosystem = {
+		no_update_news = true,
+	},
 })
 
 hl.curve("easeOutQuint", { type = "bezier", points = { { 0.23, 1 }, { 0.32, 1 } } })
@@ -152,55 +150,55 @@ hl.animation({ leaf = "workspacesOut", enabled = true, speed = 1.94, bezier = "a
 hl.animation({ leaf = "zoomFactor", enabled = true, speed = 7, bezier = "quick" })
 
 hl.config({
-  dwindle = {
-    preserve_split = true,
-    force_split = 2,
-  },
+	dwindle = {
+		preserve_split = true,
+		force_split = 2,
+	},
 
-  scrolling = {
-    column_width = 0.5,
-  },
+	scrolling = {
+		column_width = 0.5,
+	},
 
-  master = {
-    new_status = "slave",
-  },
+	master = {
+		new_status = "slave",
+	},
 
-  misc = {
-    disable_hyprland_logo = true,
-    disable_splash_rendering = true,
-    disable_scale_notification = true,
-    focus_on_activate = true,
-    anr_missed_pings = 3,
-    on_focus_under_fullscreen = 1,
-  },
+	misc = {
+		disable_hyprland_logo = true,
+		disable_splash_rendering = true,
+		disable_scale_notification = true,
+		focus_on_activate = true,
+		anr_missed_pings = 3,
+		on_focus_under_fullscreen = 1,
+	},
 
-  cursor = {
-    hide_on_key_press = true,
-    warp_on_change_workspace = 1,
-  },
+	cursor = {
+		hide_on_key_press = true,
+		warp_on_change_workspace = 1,
+	},
 
-  binds = {
-    hide_special_on_workspace_change = true,
-  },
+	binds = {
+		hide_special_on_workspace_change = true,
+	},
 })
 
 hl.config({
-  input = {
-    kb_layout = "us",
-    kb_variant = "",
-    kb_model = "",
-    kb_options = "",
-    kb_rules = "",
-    repeat_rate = 40,
-    repeat_delay = 200,
+	input = {
+		kb_layout = "us",
+		kb_variant = "",
+		kb_model = "",
+		kb_options = "",
+		kb_rules = "",
+		repeat_rate = 40,
+		repeat_delay = 200,
 
-    follow_mouse = 0,
-    sensitivity = 0, -- -1.0 - 1.0, 0 means no modification.
+		follow_mouse = 0,
+		sensitivity = 0, -- -1.0 - 1.0, 0 means no modification.
 
-    touchpad = {
-      natural_scroll = true,
-    },
-  },
+		touchpad = {
+			natural_scroll = true,
+		},
+	},
 })
 
 local mainMod = "SUPER"
@@ -211,8 +209,8 @@ hl.bind(mainMod .. " + Space", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + X", hl.dsp.window.close())
 
 hl.bind(
-  mainMod .. " + M",
-  hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'")
+	mainMod .. " + M",
+	hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'")
 )
 hl.bind(mainMod .. " + T", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "maximized" }))
@@ -296,24 +294,24 @@ hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 -- Laptop multimedia keys for volume and LCD brightness
 hl.bind(
-  "XF86AudioRaiseVolume",
-  hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"),
-  { locked = true, repeating = true }
+	"XF86AudioRaiseVolume",
+	hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"),
+	{ locked = true, repeating = true }
 )
 hl.bind(
-  "XF86AudioLowerVolume",
-  hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"),
-  { locked = true, repeating = true }
+	"XF86AudioLowerVolume",
+	hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"),
+	{ locked = true, repeating = true }
 )
 hl.bind(
-  "XF86AudioMute",
-  hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"),
-  { locked = true, repeating = true }
+	"XF86AudioMute",
+	hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"),
+	{ locked = true, repeating = true }
 )
 hl.bind(
-  "XF86AudioMicMute",
-  hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"),
-  { locked = true, repeating = true }
+	"XF86AudioMicMute",
+	hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"),
+	{ locked = true, repeating = true }
 )
 hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+"), { locked = true, repeating = true })
 hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-"), { locked = true, repeating = true })
@@ -325,14 +323,14 @@ hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = tru
 hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true })
 
 hl.window_rule({
-  name = "fix-xwayland-drags",
-  match = {
-    class = "^$",
-    title = "^$",
-    xwayland = true,
-    float = true,
-    fullscreen = false,
-    pin = false,
-  },
-  no_focus = true,
+	name = "fix-xwayland-drags",
+	match = {
+		class = "^$",
+		title = "^$",
+		xwayland = true,
+		float = true,
+		fullscreen = false,
+		pin = false,
+	},
+	no_focus = true,
 })
