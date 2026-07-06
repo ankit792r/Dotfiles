@@ -7,6 +7,10 @@ return {
 			enabled = true,
 			matcher = {
 				frecency = true,
+				cwd_bonus = true,
+				fuzzy = true,
+				smartcase = true,
+				ignorecase = true,
 			},
 			layout = "new_layout",
 			layouts = {
@@ -37,7 +41,7 @@ return {
 			},
 		},
 		indent = {
-			enabled = false,
+			enabled = true,
 			only_scope = true,
 			animate = { enabled = false },
 		},
@@ -62,7 +66,9 @@ return {
 		{
 			"<leader>ff",
 			function()
-				Snacks.picker.files()
+				Snacks.picker.files({
+					cwd = vim.fn.getcwd(),
+				})
 			end,
 			desc = "Buffers",
 		},
@@ -70,23 +76,29 @@ return {
 		{
 			"<leader><leader>",
 			function()
-				Snacks.picker.recent()
+				Snacks.picker.recent({
+					cwd = vim.fn.getcwd(),
+				})
 			end,
 			desc = "Buffers",
 		},
 
 		{
-			"<leader>,",
+			"<leader>fb",
 			function()
-				Snacks.picker.buffers()
+				Snacks.picker.buffers({
+					cwd = vim.fn.getcwd(),
+				})
 			end,
 			desc = "Find Files",
 		},
 
 		{
-			"<leader>/",
+			"<leader>fg",
 			function()
-				Snacks.picker.grep()
+				Snacks.picker.grep({
+					cwd = vim.fn.getcwd(),
+				})
 			end,
 			desc = "Grep",
 		},
@@ -97,6 +109,22 @@ return {
 				Snacks.picker.resume()
 			end,
 			desc = "Resume Picker",
+		},
+
+		{
+			"<leader>sb",
+			function()
+				Snacks.picker.lines()
+			end,
+			desc = "Buffer Lines",
+		},
+
+		{
+			"<C-/>",
+			function()
+				Snacks.terminal()
+			end,
+			desc = "Toggle Terminal",
 		},
 	},
 }

@@ -58,7 +58,7 @@ vim.cmd([[ autocmd RecordingLeave * set cmdheight=0 ]])
 vim.cmd([[let &t_Cs = "\e[4:3m"]])
 vim.cmd([[let &t_Ce = "\e[4:0m"]])
 
--- vim.o.winborder = "single"
+vim.o.winborder = "single"
 
 -- vim.diagnostic.config({
 --   signs = true,
