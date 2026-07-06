@@ -4,9 +4,9 @@
   "height": 28,
   "modules-left": [
     // "sway/scratchpad",
-    "hyprland/workspaces",
-    "hyprland/window"
-    // "sway/mode"
+    "sway/workspaces",
+    // "hyprland/window"
+    "sway/mode"
     // "niri/workspaces",
     // "niri/window"
   ],
@@ -31,10 +31,6 @@
     "timezone": "Asia/Kolkata",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
     "format-alt": "{:%Y-%m-%d}"
-  },
-
-  "sway/mode": {
-    "format": "<span style=\"italic\">{}</span>"
   },
 
   "cpu": {
