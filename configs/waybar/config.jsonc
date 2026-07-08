@@ -1,14 +1,15 @@
 {
   "layer":"top",
-  "position": "bottom",
+  "position": "top",
   "height": 28,
   "modules-left": [
     // "sway/scratchpad",
-    "sway/workspaces",
+    // "sway/workspaces",
+    // "hyprland/workspaces",
     // "hyprland/window"
-    "sway/mode"
-    // "niri/workspaces",
-    // "niri/window"
+    // "sway/mode"
+    "niri/workspaces",
+    "niri/window"
   ],
   "modules-center": [],
   "modules-right": [
