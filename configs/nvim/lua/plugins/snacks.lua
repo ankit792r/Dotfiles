@@ -19,7 +19,7 @@ return {
 						box = "horizontal",
 						border = "none",
 						width = 0.8,
-						height = 0.8,
+						height = 0.7,
 						{
 							box = "vertical",
 							border = "none",
@@ -34,14 +34,14 @@ return {
 						{
 							win = "preview",
 							border = "single",
-							width = 0.55,
+							width = 0.6,
 						},
 					},
 				},
 			},
 		},
 		indent = {
-			enabled = true,
+			enabled = false,
 			only_scope = true,
 			animate = { enabled = false },
 		},
@@ -64,43 +64,58 @@ return {
 
 	keys = {
 		{
-			"<leader>ff",
+			"<leader><space>",
 			function()
-				Snacks.picker.files({
-					cwd = vim.fn.getcwd(),
-				})
+				Snacks.picker.smart()
 			end,
-			desc = "Buffers",
+			desc = "Smart Find Files",
 		},
-
 		{
-			"<leader><leader>",
+			"<leader>,",
 			function()
-				Snacks.picker.recent({
-					cwd = vim.fn.getcwd(),
-				})
+				Snacks.picker.buffers()
 			end,
 			desc = "Buffers",
 		},
+		{
+			"<leader>/",
+			function()
+				Snacks.picker.grep()
+			end,
+			desc = "Grep",
+		},
 
+		-- find
 		{
 			"<leader>fb",
 			function()
-				Snacks.picker.buffers({
-					cwd = vim.fn.getcwd(),
-				})
+				Snacks.picker.buffers()
+			end,
+			desc = "Buffers",
+		},
+
+		{
+			"<leader>fc",
+			function()
+				Snacks.picker.files({ cwd = vim.fn.stdpath("config") })
+			end,
+			desc = "Find Config File",
+		},
+
+		{
+			"<leader>ff",
+			function()
+				Snacks.picker.files()
 			end,
 			desc = "Find Files",
 		},
 
 		{
-			"<leader>fg",
+			"<leader>fp",
 			function()
-				Snacks.picker.grep({
-					cwd = vim.fn.getcwd(),
-				})
+				Snacks.picker.projects()
 			end,
-			desc = "Grep",
+			desc = "Projects",
 		},
 
 		{
@@ -118,13 +133,107 @@ return {
 			end,
 			desc = "Buffer Lines",
 		},
+		{
+			"<leader>sB",
+			function()
+				Snacks.picker.grep_buffers()
+			end,
+			desc = "Grep Open Buffers",
+		},
+		{
+			"<leader>sg",
+			function()
+				Snacks.picker.grep()
+			end,
+			desc = "Grep",
+		},
+		{
+			"<leader>sw",
+			function()
+				Snacks.picker.grep_word()
+			end,
+			desc = "Visual selection or word",
+			mode = { "n", "x" },
+
+			{
+				"<C-/>",
+				function()
+					Snacks.terminal()
+				end,
+				desc = "Toggle Terminal",
+			},
+		},
 
 		{
-			"<C-/>",
+			"<leader>sa",
 			function()
-				Snacks.terminal()
+				Snacks.picker.autocmds()
 			end,
-			desc = "Toggle Terminal",
+			desc = "Autocmds",
+		},
+
+		{
+			"<leader>sb",
+			function()
+				Snacks.picker.lines()
+			end,
+			desc = "Buffer Lines",
+		},
+
+		{
+			"<leader>sh",
+			function()
+				Snacks.picker.help()
+			end,
+			desc = "Help Pages",
+		},
+
+		{
+			"<leader>si",
+			function()
+				Snacks.picker.icons()
+			end,
+			desc = "Icons",
+		},
+
+		{
+			"<leader>sj",
+			function()
+				Snacks.picker.jumps()
+			end,
+			desc = "Jumps",
+		},
+
+		{
+			"<leader>sl",
+			function()
+				Snacks.picker.loclist()
+			end,
+			desc = "Location List",
+		},
+
+		{
+			"<leader>sm",
+			function()
+				Snacks.picker.marks()
+			end,
+			desc = "Marks",
+		},
+
+		{
+			"<leader>sM",
+			function()
+				Snacks.picker.man()
+			end,
+			desc = "Man Pages",
+		},
+
+		{
+			"<leader>su",
+			function()
+				Snacks.picker.undo()
+			end,
+			desc = "Undo History",
 		},
 	},
 }
