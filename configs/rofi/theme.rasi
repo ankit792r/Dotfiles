@@ -4,11 +4,15 @@
     inactive: #1f1d2e;
     bg:       rgba(0, 0, 0, 0.8);
     bg-alt:   rgba(0, 0, 0, 0.8);
-    fg:       #cdd6f4;
+    fg:       #bdbdbd;
     fg-alt:   #6e6a86;
 
     background-color: transparent;
     text-color: @fg;
+
+    font-family: "Iosevka Nerd Font";
+    font-weight: bold;
+    font-size: 14px;
 
     selected-bg: #313244;
 }
