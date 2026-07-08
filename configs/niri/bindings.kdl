@@ -3,8 +3,9 @@ binds {
   Mod+B hotkey-overlay-title="Open Browser" { spawn "firefox"; }
   Mod+E hotkey-overlay-title="Open file manager" { spawn "yazi"; }
   Mod+Return hotkey-overlay-title="Open a Terminal" { spawn "kitty"; }
-  Mod+Space hotkey-overlay-title="Run an Application" { spawn-sh "uwsm-app app-menu"; }
+  Mod+Space hotkey-overlay-title="Run an Application" { spawn-sh "uwsm-app app-menu"; } 
   Mod+Backspace hotkey-overlay-title="Show menu menu" { spawn-sh "uwsm-app power-menu"; }
+  Mod+Backslash hotkey-overlay-title="Show menu menu" { spawn-sh "uwsm-app system-menu"; }
   Mod+Alt+L hotkey-overlay-title="Lock the Screen" { spawn-sh "pkill hyprlock || hyprlock"; }
 
   XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+"; }
@@ -15,7 +16,7 @@ binds {
   XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
   XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
 
-  Mod+O repeat=false { toggle-overview; }
+  // Mod+O repeat=false { toggle-overview; }
   Mod+X repeat=true { close-window; }
 
   Mod+Left  { focus-column-left; }
@@ -41,8 +42,9 @@ binds {
 
   Mod+Page_Down      { focus-workspace-down; }
   Mod+Page_Up        { focus-workspace-up; }
-  Mod+Shift+J        { focus-workspace-down; }
-  Mod+Shift+K        { focus-workspace-up; }
+  // Mod+Shift+J        { focus-workspace-down; }
+  // Mod+Shift+K        { focus-workspace-up; }
+
   Mod+Ctrl+Page_Down { move-column-to-workspace-down; }
   Mod+Ctrl+Page_Up   { move-column-to-workspace-up; }
   Mod+Ctrl+Shift+J   { move-column-to-workspace-down; }
@@ -65,24 +67,21 @@ binds {
   Mod+Ctrl+Shift+WheelScrollDown { move-column-right; }
   Mod+Ctrl+Shift+WheelScrollUp   { move-column-left; }
 
-  Mod+1 { focus-workspace 1; }
-  Mod+2 { focus-workspace 2; }
-  Mod+3 { focus-workspace 3; }
-  Mod+4 { focus-workspace 4; }
-  Mod+5 { focus-workspace 5; }
-  Mod+6 { focus-workspace 6; }
-  Mod+7 { focus-workspace 7; }
-  Mod+8 { focus-workspace 8; }
-  Mod+9 { focus-workspace 9; }
-  Mod+Ctrl+1 { move-column-to-workspace 1; }
-  Mod+Ctrl+2 { move-column-to-workspace 2; }
-  Mod+Ctrl+3 { move-column-to-workspace 3; }
-  Mod+Ctrl+4 { move-column-to-workspace 4; }
-  Mod+Ctrl+5 { move-column-to-workspace 5; }
-  Mod+Ctrl+6 { move-column-to-workspace 6; }
-  Mod+Ctrl+7 { move-column-to-workspace 7; }
-  Mod+Ctrl+8 { move-column-to-workspace 8; }
-  Mod+Ctrl+9 { move-column-to-workspace 9; }
+  Mod+U { focus-workspace 1; }
+  Mod+I { focus-workspace 2; }
+  Mod+O { focus-workspace 3; }
+  Mod+P { focus-workspace 4; }
+  Mod+7 { focus-workspace 5; }
+  Mod+8 { focus-workspace 6; }
+  Mod+9 { focus-workspace 7; }
+
+  Mod+Ctrl+U { move-column-to-workspace 1; }
+  Mod+Ctrl+I { move-column-to-workspace 2; }
+  Mod+Ctrl+O { move-column-to-workspace 3; }
+  Mod+Ctrl+P { move-column-to-workspace 4; }
+  Mod+Ctrl+7 { move-column-to-workspace 5; }
+  Mod+Ctrl+8 { move-column-to-workspace 6; }
+  Mod+Ctrl+9 { move-column-to-workspace 7; }
 
   Mod+BracketLeft  { consume-or-expel-window-left; }
   Mod+BracketRight { consume-or-expel-window-right; }

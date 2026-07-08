@@ -6,7 +6,7 @@ input {
       // options "caps:escape"
     }
 
-    repeat-delay 180
+    repeat-delay 200
     repeat-rate 35
     // numlock
   }

@@ -21,7 +21,7 @@ overview {
 }
 
 layout {
-  gaps 0
+  gaps 6
   always-center-single-column
   center-focused-column "never"
   background-color "transparent"
@@ -56,7 +56,7 @@ layout {
 }
 
 blur {
-  off
+  on
   passes 1
   offset 2
   noise 0.02

@@ -1,20 +1,16 @@
-// window-rule {
-//   draw-border-with-background false
-//
-//   background-effect {
-//     blur true
-//   }
-// }
+window-rule {
+  draw-border-with-background false
+}
 
-// window-rule {
-//   match app-id="^kitty$"
-//   match app-id="^Alacritty$"
-//
-//   opacity 0.88
-//   background-effect {
-//     blur true
-//   }
-// }
+window-rule {
+  match app-id="^kitty$"
+  match app-id="^Alacritty$"
+
+  opacity 0.8
+  background-effect {
+    blur true
+  }
+}
 
 window-rule {
   match title="^Picture-in-Picture$"
