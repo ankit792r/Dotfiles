@@ -156,11 +156,12 @@ hl.config({
 	},
 
 	scrolling = {
-		column_width = 0.5,
+		column_width = 0.49,
 	},
 
 	master = {
 		new_status = "slave",
+    mfact = 0.5
 	},
 
 	misc = {
@@ -334,3 +335,21 @@ hl.window_rule({
 	},
 	no_focus = true,
 })
+
+hl.window_rule({
+	name = "firefox-full-width",
+	match = {
+		class = "firefox",
+	},
+	maximize = true,
+	no_blur = true,
+	workspace = "1",
+})
+
+hl.bind(mainMod .. " + G", hl.dsp.layout("move +col"))
+hl.bind(mainMod .. " + Y", hl.dsp.layout("swapcol l"))
+
+hl.workspace_rule({ workspace = "1", layout = "scrolling" })
+hl.workspace_rule({ workspace = "2", layout = "master" })
+
+hl.layer_rule({ match = { namespace = "waybar" }, blur = true })
