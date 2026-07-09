@@ -1,12 +1,15 @@
 binds {
   Mod+Shift+Slash { show-hotkey-overlay; }
-  Mod+B hotkey-overlay-title="Open Browser" { spawn "firefox"; }
-  Mod+E hotkey-overlay-title="Open file manager" { spawn "yazi"; }
-  Mod+Return hotkey-overlay-title="Open a Terminal" { spawn "kitty"; }
+  Mod+Return hotkey-overlay-title="Open a Terminal" { spawn "alacritty"; }
   Mod+Space hotkey-overlay-title="Run an Application" { spawn-sh "uwsm-app app-menu"; } 
   Mod+Backspace hotkey-overlay-title="Show menu menu" { spawn-sh "uwsm-app power-menu"; }
   Mod+Backslash hotkey-overlay-title="Show menu menu" { spawn-sh "uwsm-app system-menu"; }
   Mod+Alt+L hotkey-overlay-title="Lock the Screen" { spawn-sh "pkill hyprlock || hyprlock"; }
+
+  // Mod+O repeat=false { toggle-overview; }
+  Mod+X repeat=true { close-window; }
+  Mod+B hotkey-overlay-title="Open Browser" { spawn "firefox"; }
+  Mod+E hotkey-overlay-title="Open file manager" { spawn-sh "kitty yazi"; }
 
   XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+"; }
   XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
@@ -15,9 +18,6 @@ binds {
 
   XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
   XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
-
-  // Mod+O repeat=false { toggle-overview; }
-  Mod+X repeat=true { close-window; }
 
   Mod+Left  { focus-column-left; }
   Mod+Down  { focus-window-down; }
