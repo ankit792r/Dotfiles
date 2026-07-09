@@ -32,6 +32,7 @@ return {
 			vim.g.moonflyItalics = true
 			vim.o.pumborder = "single"
 			vim.g.moonflyTransparent = true
+			vim.g.moonflyNormalFloat = true
 			vim.cmd("colorscheme moonfly")
 		end,
 	},
