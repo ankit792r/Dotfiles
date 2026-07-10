@@ -2,8 +2,6 @@ return {
   "nvim-lualine/lualine.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },
   config = function()
-    -- local mocha = require("catppuccin.palettes").get_palette "mocha"
-
     require("lualine").setup({
       options = {
         globalstatus = true,
@@ -17,21 +15,21 @@ return {
           statusline = {},
           winbar = {},
         },
-        -- theme = {
-        --   normal = {
-        --     a = { fg = mocha.text, bg = mocha.base },
-        --     b = { fg = mocha.text, bg = mocha.base },
-        --     c = { fg = mocha.text, bg = mocha.base },
-        --   },
-        --   insert = { a = { fg = mocha.base, bg = mocha.green } },
-        --   visual = { a = { fg = mocha.base, bg = mocha.blue } },
-        --   replace = { a = { fg = mocha.base, bg = mocha.red } },
-        --   inactive = {
-        --     a = { fg = mocha.base, bg = mocha.base },
-        --     b = { fg = mocha.base, bg = mocha.base },
-        --     c = { fg = mocha.base, bg = mocha.base },
-        --   },
-        -- },
+        theme = {
+          normal = {
+            a = { bg = "NONE" },
+            b = { bg = "NONE" },
+            c = { bg = "NONE" },
+          },
+          -- insert = { a = { fg = mocha.base, bg = mocha.green } },
+          -- visual = { a = { fg = mocha.base, bg = mocha.blue } },
+          -- replace = { a = { fg = mocha.base, bg = mocha.red } },
+          inactive = {
+            a = { bg = "NONE" },
+            b = { bg = "NONE" },
+            c = { bg = "NONE" },
+          },
+        },
         sections = {
           lualine_a = { "mode" },
           lualine_b = { "branch", "diff", "diagnostics" },
