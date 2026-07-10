@@ -19,7 +19,7 @@ return {
 						box = "horizontal",
 						border = "none",
 						width = 0.8,
-						height = 0.7,
+						height = 0.8,
 						{
 							box = "vertical",
 							border = "none",
@@ -41,7 +41,7 @@ return {
 			},
 		},
 		indent = {
-			enabled = false,
+			enabled = true,
 			only_scope = true,
 			animate = { enabled = false },
 		},
@@ -95,27 +95,11 @@ return {
 		},
 
 		{
-			"<leader>fc",
-			function()
-				Snacks.picker.files({ cwd = vim.fn.stdpath("config") })
-			end,
-			desc = "Find Config File",
-		},
-
-		{
 			"<leader>ff",
 			function()
 				Snacks.picker.files()
 			end,
 			desc = "Find Files",
-		},
-
-		{
-			"<leader>fp",
-			function()
-				Snacks.picker.projects()
-			end,
-			desc = "Projects",
 		},
 
 		{
@@ -140,6 +124,7 @@ return {
 			end,
 			desc = "Grep Open Buffers",
 		},
+
 		{
 			"<leader>sg",
 			function()
@@ -170,14 +155,6 @@ return {
 				Snacks.picker.autocmds()
 			end,
 			desc = "Autocmds",
-		},
-
-		{
-			"<leader>sb",
-			function()
-				Snacks.picker.lines()
-			end,
-			desc = "Buffer Lines",
 		},
 
 		{
@@ -218,14 +195,6 @@ return {
 				Snacks.picker.marks()
 			end,
 			desc = "Marks",
-		},
-
-		{
-			"<leader>sM",
-			function()
-				Snacks.picker.man()
-			end,
-			desc = "Man Pages",
 		},
 
 		{
