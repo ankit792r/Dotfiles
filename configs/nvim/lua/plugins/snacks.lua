@@ -139,14 +139,6 @@ return {
 			end,
 			desc = "Visual selection or word",
 			mode = { "n", "x" },
-
-			{
-				"<C-/>",
-				function()
-					Snacks.terminal()
-				end,
-				desc = "Toggle Terminal",
-			},
 		},
 
 		{
@@ -203,6 +195,14 @@ return {
 				Snacks.picker.undo()
 			end,
 			desc = "Undo History",
+		},
+
+		{
+			"<C-/>",
+			function()
+				Snacks.terminal()
+			end,
+			desc = "Toggle Terminal",
 		},
 	},
 }

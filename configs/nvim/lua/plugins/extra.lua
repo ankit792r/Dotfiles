@@ -79,6 +79,7 @@ return {
 		end,
 	},
 
+  -- which key
 	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",
