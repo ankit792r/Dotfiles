@@ -1,7 +1,8 @@
 [general]
 import = [
   # "./mocha.toml"
-  "./moonfly.toml"
+  # "./moonfly.toml"
+  "./rosepine.toml"
 ]
 
 [env]
