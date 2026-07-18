@@ -5,11 +5,11 @@
   "modules-left": [
     // "sway/scratchpad",
     // "sway/workspaces",
-    // "hyprland/workspaces",
-    // "hyprland/window"
+    "hyprland/workspaces",
+    "hyprland/window"
     // "sway/mode"
-    "niri/workspaces",
-    "niri/window"
+    // "niri/workspaces",
+    // "niri/window"
   ],
   "modules-center": [],
   "modules-right": [
