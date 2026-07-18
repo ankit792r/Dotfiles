@@ -4,7 +4,4 @@
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 PS1='[\W]-> '
-
-bind '"\ej": history-search-forward'
-bind '"\ek": history-search-backward'
 fortune | cowsay
