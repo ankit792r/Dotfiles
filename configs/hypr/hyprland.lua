@@ -3,6 +3,7 @@
 ---------------------
 local terminal = "kitty"
 local menu = "rofi -show drun"
+local browser = "firefox"
 
 ---------------------
 --- Monitors --------
@@ -245,15 +246,40 @@ local secondMod = "SUPER + SHIFT"
 
 hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + Space", hl.dsp.exec_cmd(menu))
+hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser))
 hl.bind(mainMod .. " + X", hl.dsp.window.close())
 
 hl.bind(
   mainMod .. " + M",
   hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'")
 )
-hl.bind(mainMod .. " + T", hl.dsp.window.float({ action = "toggle" }))
+hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle" }))
 hl.bind(secondMod .. " + F", hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }))
+
+-- Example: Direct Resize binds (Super+Shift+Arrow)
+hl.bind(mainMod .. " + BracketRight", hl.dsp.window.resize({ x = 20, y = 0, relative = true }), { repeating = true })
+hl.bind(mainMod .. " + BracketLeft", hl.dsp.window.resize({ x = -20, y = 0, relative = true }), { repeating = true })
+
+hl.bind(secondMod .. " + BracketRight", hl.dsp.window.resize({ x = 0, y = 20, relative = true }), { repeating = true })
+hl.bind(secondMod .. " + BracketLeft", hl.dsp.window.resize({ x = 0, y = -20, relative = true }), { repeating = true })
+
+
+-- Example: Submap for resizing with Arrow Keys
+hl.bind("SUPER + R", hl.dsp.submap("resize"))
+hl.define_submap("resize", function()
+  -- Set repeating binds for directions
+  hl.bind("L", hl.dsp.window.resize({ x = 20, y = 0, relative = true }), { repeating = true })
+  hl.bind("H", hl.dsp.window.resize({ x = -20, y = 0, relative = true }), { repeating = true })
+
+  hl.bind("J", hl.dsp.window.resize({ x = 0, y = 20, relative = true }), { repeating = true })
+  hl.bind("K", hl.dsp.window.resize({ x = 0, y = -20, relative = true }), { repeating = true })
+
+  -- Add up/down here...
+  hl.bind("escape", hl.dsp.submap("reset"))
+  hl.bind("q", hl.dsp.submap("reset"))
+end)
+
 
 -- hl.bind(mainMod .. " + B", hl.dsp.layout("togglesplit"))
 -- hl.bind(mainMod .. " + S", hl.dsp.layout("scrolling"))
@@ -366,7 +392,7 @@ hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true 
 -- Save full screen to Pictures folder and copy to clipboard
 hl.bind(mainMod .. " + S",
   hl.dsp.exec_cmd(
-  "grim ~/Pictures/$(date +'%Y-%m-%d_%H-%m-%S').png && wl-copy < ~/Pictures/$(date +'%Y-%m-%d_%H-%m-%S').png"))
+    "grim ~/Pictures/$(date +'%Y-%m-%d_%H-%m-%S').png && wl-copy < ~/Pictures/$(date +'%Y-%m-%d_%H-%m-%S').png"))
 
 -- Select a region to save and copy to clipboard (most popular)
 hl.bind(secondMod .. " + S", hl.dsp.exec_cmd("grim -g \"$(slurp)\" ~/Pictures/$(date +'%Y-%m-%d_%H-%m-%S').png"))
@@ -405,7 +431,7 @@ hl.window_rule({
   match = {
     class = "firefox",
   },
-  maximize = true,
+  -- maximize = true,
   no_blur = true,
   workspace = "1",
 })

@@ -1,7 +1,7 @@
 @define-color bg rgba(0, 0, 0, 0.30);          /* Base */
 @define-color bg-hover #313244;    /* Surface0 */
 
-@define-color fg #bdbdbd;          /* Text */
+@define-color fg #e0def4;          /* Text */
 @define-color muted #6c7086;       /* Overlay0 */
 @define-color separator #45475a;   /* Surface1 */
 
@@ -64,7 +64,7 @@ button:hover {
   color: @fg;
 }
 
-#mode {
+#mode, #submap {
   background-color: @muted;
   box-shadow: inset 0 -3px @fg;
 }
@@ -81,6 +81,7 @@ button:hover {
 #mode,
 #load,
 #backlight,
+#submap,
 #pulseaudio {
   color: @fg;
 }
@@ -117,6 +118,7 @@ button:hover {
   border-bottom-color: @warning;
 }
 
+#submap,
 #waybar > box:nth-child(2) > box:nth-child(3) > * > label {
   padding: 0 6px;
 }
