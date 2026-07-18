@@ -4,7 +4,7 @@
     inactive: #1f1d2e;
     bg:       rgba(0, 0, 0, 0.8);
     bg-alt:   rgba(0, 0, 0, 0.8);
-    fg:       #bdbdbd;
+    fg:       #e0def4;
     fg-alt:   #6e6a86;
 
     background-color: transparent;

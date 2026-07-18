@@ -56,7 +56,15 @@ hl.env("XDG_SESSION_DESKTOP", "Hyprland")
 -----------------------
 ---- LOOK AND FEEL ----
 -----------------------
-local active_border_color = "rgba(4c566aaa)" -- { colors = { "rgba(33ccffee)", "rgba(00ff99ee)" }, angle = 45 }
+-- local active_border_color = {
+--   colors = {
+--     "rgba(74B8C7EE)",
+--     "rgba(73C09AEE)"
+--   },
+--   angle = 45
+-- }
+
+local active_border_color = "rgba(4c566aaa)"
 local inactive_border_color = "rgba(191724aa)"
 -- Refer to https://wiki.hypr.land/Configuring/Basics/Variables/
 hl.config({
