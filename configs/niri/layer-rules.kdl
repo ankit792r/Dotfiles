@@ -24,7 +24,7 @@ layer-rule {
   match namespace="^waybar$"
   match namespace="quickshell"
 
-  opacity 0.6
+  // opacity 0.6
   background-effect {
     blur true
     xray false
