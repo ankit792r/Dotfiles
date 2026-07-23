@@ -34,7 +34,7 @@ return {
       map("n", "gr", vim.lsp.buf.references, "Goto References")
       map("n", "gI", vim.lsp.buf.implementation, "Goto Implementation")
       map("n", "gy", vim.lsp.buf.type_definition, "Type Definition")
-			map("n", "<leader>rr", vim.lsp.buf.rename, "Rename reference")
+      map("n", "<leader>rr", vim.lsp.buf.rename, "Rename reference")
       map("i", "<C-k>", vim.lsp.buf.signature_help, "Signature Help")
 
       -- Actions & Refactoring
@@ -47,6 +47,7 @@ return {
       -- Diagnostics (CRITICAL since virtual_text is off)
       map("n", "[d", vim.diagnostic.goto_prev, "Prev Diagnostic")
       map("n", "]d", vim.diagnostic.goto_next, "Next Diagnostic")
+
 
       map("n", "<leader>cd", function()
         vim.diagnostic.open_float({
@@ -61,13 +62,22 @@ return {
       -- Call Hierarchy
       map("n", "gai", vim.lsp.buf.incoming_calls, "Incoming Calls")
       map("n", "gao", vim.lsp.buf.outgoing_calls, "Outgoing Calls")
+
+      vim.diagnostic.config({
+        signs = true,
+        unerline = true,
+        upate_in_insert = true,
+        virtual_text = {
+          prefix = "■",
+        },
+      })
     end,
   },
 
   -- None LS
   {
     "nvimtools/none-ls.nvim",
-    dependencies = { "mason.nvim", "nvimtools/none-ls-extras.nvim" },
+    dependencies = { "mason.nvim", "nvim-lua/plenary.nvim", "nvimtools/none-ls-extras.nvim" },
     config = function()
       require("null-ls").setup()
       vim.keymap.set("n", "<leader>cf", function()
