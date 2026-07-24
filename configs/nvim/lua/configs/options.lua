@@ -51,7 +51,7 @@ vim.o.winborder = "single"
 
 vim.wo.number = true
 vim.opt.showmode = true
--- vim.opt.cmdheight = 0
+vim.opt.cmdheight = 0
 
 -- vim.cmd([[ autocmd RecordingEnter * set cmdheight=1 ]])
 -- vim.cmd([[ autocmd RecordingLeave * set cmdheight=0 ]])
