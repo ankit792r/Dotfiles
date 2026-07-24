@@ -42,9 +42,12 @@ layout {
 
   border {
     on
-    width 3
-    active-color "#524f67"
-    inactive-color "#191724"
+    width 2
+    // active-color "#524f67"
+    // inactive-color "#191724"
+    active-color "#7B8394"
+    inactive-color "#524f67"
+    urgent-color "#653636"
   }
 
   struts {
