@@ -1,6 +1,6 @@
 binds {
   Mod+Shift+Slash { show-hotkey-overlay; }
-  Mod+Return hotkey-overlay-title="Open a Terminal" { spawn "kitty"; }
+  Mod+Return hotkey-overlay-title="Open a Terminal" { spawn "alacritty"; }
   Mod+Space hotkey-overlay-title="Run an Application" { spawn-sh "uwsm-app app-menu"; } 
   Mod+Backspace hotkey-overlay-title="Show menu menu" { spawn-sh "uwsm-app power-menu"; }
   Mod+Backslash hotkey-overlay-title="Show menu menu" { spawn-sh "uwsm-app system-menu"; }

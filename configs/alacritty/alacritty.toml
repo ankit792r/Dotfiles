@@ -33,6 +33,7 @@ style = "Bold Italic"
 padding = { x = 6, y = 6 }
 decorations = "None"
 dynamic_padding = true
+opacity = 0.6
 
 [[keyboard.bindings]]
 key = "Insert"
