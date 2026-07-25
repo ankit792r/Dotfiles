@@ -1,13 +1,12 @@
 binds {
-  Mod+Shift+Slash { show-hotkey-overlay; }
-  Mod+Return hotkey-overlay-title="Open a Terminal" { spawn "alacritty"; }
+  Mod+Return hotkey-overlay-title="Open a Terminal" { spawn "kitty"; }
   Mod+Space hotkey-overlay-title="Run an Application" { spawn-sh "uwsm-app app-menu"; } 
   Mod+Backspace hotkey-overlay-title="Show menu menu" { spawn-sh "uwsm-app power-menu"; }
   Mod+Backslash hotkey-overlay-title="Show menu menu" { spawn-sh "uwsm-app system-menu"; }
   Mod+Alt+L hotkey-overlay-title="Lock the Screen" { spawn-sh "pkill hyprlock || hyprlock"; }
 
   // Mod+O repeat=false { toggle-overview; }
-  Mod+X repeat=true { close-window; }
+  Mod+Q repeat=true { close-window; }
   Mod+B hotkey-overlay-title="Open Browser" { spawn "firefox"; }
   Mod+E hotkey-overlay-title="Open file manager" { spawn-sh "kitty yazi"; }
 
@@ -42,13 +41,13 @@ binds {
 
   Mod+Page_Down      { focus-workspace-down; }
   Mod+Page_Up        { focus-workspace-up; }
-  Mod+Shift+J        { focus-workspace-down; }
-  Mod+Shift+K        { focus-workspace-up; }
+  // Mod+Shift+J        { focus-workspace-down; }
+  // Mod+Shift+K        { focus-workspace-up; }
 
   Mod+Ctrl+Page_Down { move-column-to-workspace-down; }
   Mod+Ctrl+Page_Up   { move-column-to-workspace-up; }
-  Mod+Ctrl+Shift+J   { move-column-to-workspace-down; }
-  Mod+Ctrl+Shift+K   { move-column-to-workspace-up; }
+  // Mod+Ctrl+Shift+J   { move-column-to-workspace-down; }
+  // Mod+Ctrl+Shift+K   { move-column-to-workspace-up; }
 
   Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
   Mod+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
@@ -100,6 +99,7 @@ binds {
   Mod+Shift+F { fullscreen-window; }
 
   Mod+C { center-column; }
+  Mod+Ctrl+C { center-visible-columns; }
 
   Mod+Minus { set-column-width "-10%"; }
   Mod+Equal { set-column-width "+10%"; }

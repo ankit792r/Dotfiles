@@ -2,7 +2,7 @@ environment {
   GTK_THEME "Adwaita:dark"
   GTK_APPLICATION_PREFER_DARK_THEME "1"
   QT_QPA_PLATFORMTHEME "qt5ct"
-  EDITOR "vim"
+  EDITOR "nvim"
   MOZ_ENABLE_WAYLAND "1"
   ELECTRON_OZONE_PLATFORM_HINT "auto"
   QT_QPA_PLATFORM "wayland"

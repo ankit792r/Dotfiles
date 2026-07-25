@@ -5,7 +5,7 @@ include "./autostart.kdl"
 include "./layer-rules.kdl"
 include "./window-rules.kdl"
 include "./bindings.kdl"
-include "./animation.kdl"
+// include "./animation.kdl"
 include "./misc.kdl"
 
 overview {
@@ -33,18 +33,16 @@ layout {
   }
 
   default-column-width { proportion 0.5; }
-
   focus-ring {
-    off
-    width 3
-    active-color "#4c566a"
+    width 2
+    active-color "#7B8394"
+    inactive-color "#524f67"
+    urgent-color "#653636"
   }
 
   border {
-    on
+    off
     width 2
-    // active-color "#524f67"
-    // inactive-color "#191724"
     active-color "#7B8394"
     inactive-color "#524f67"
     urgent-color "#653636"

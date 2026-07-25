@@ -3,13 +3,6 @@
   "position": "top",
   "height": 28,
   "modules-left": [
-    // "sway/scratchpad",
-    // "sway/workspaces",
-    // "hyprland/workspaces",
-    // "hyprland/submap",
-    // "hyprland/window"
-    // "sway/mode",
-    // "sway/window"
     "niri/workspaces",
     "niri/window"
   ],
@@ -21,9 +14,7 @@
     "network",
     "bluetooth",
     "cpu",
-    "load",
     "memory",
-    // "custom/igpu",
     "temperature",
     "battery",
     "clock",
@@ -37,30 +28,17 @@
   },
 
   "cpu": {
-    "format": "CPU {usage}%",
+    "format": "  {usage}%",
     "tooltip": false
-  },
-
-  "load": {
-    "interval": 10,
-    "format": "LOAD {load15}",
-    "max-length": 10
   },
 
   "memory": {
-    "format": "MEM {used:0.1f}G/{total:0.1f}G"
-  },
-
-  "custom/igpu": {
-    "exec": "~/.config/waybar/scripts/intel.sh",
-    "interval": 2,
-    "return-type": "text",
-    "tooltip": false
+    "format": "  {used:0.2f}GiB"
   },
 
   "disk#root": {
     "interval": 60,
-    "format": "DISK {percentage_used}%/{total}",
+    "format": "  {percentage_used}%",
     "path": "/"
   },
 
@@ -72,7 +50,7 @@
 
   "temperature": {
     "critical-threshold": 80,
-    "format": "TEMP {temperatureC}°C"
+    "format": " {temperatureC}°C"
    },
 
   "battery": {
@@ -80,16 +58,15 @@
       "warning": 30,
       "critical": 20
     },
-    "format": "BAT {capacity}%",
-    "format-full": "BAT {capacity}%",
-    "format-charging": "BAT-C {capacity}%",
-    "format-plugged": "BAT-P {capacity}%",
-    "format-alt": "{time} {icon}"
+    "format": "󰁹 {capacity}%",
+    "format-full": "󰁹 {capacity}%",
+    "format-charging": "󰁹 {capacity}%",
+    "format-plugged": "󰁹 {capacity}%"
   },
 
   "network": {
-    "format-wifi": "WiFi {essid}",
-    "format-ethernet": "ETH {ipaddr}/{cidr}",
+    "format-wifi": "󰤥  {essid}",
+    "format-ethernet": "󰈀  {ipaddr}/{cidr}",
     "tooltip-format": "{ifname} via {gwaddr}",
     "format-linked": "{ifname} (No IP)",
     "format-disconnected": "WiFi Disconnected",
@@ -98,24 +75,24 @@
   },
 
   "bluetooth": {
-    "format": "BT {status}",
-    "format-disabled": "BT OFF",
-    "format-connected": "BT {device_alias}",
+    "format": " {status}",
+    "format-disabled": "󰂲 OFF",
+    "format-connected": " {device_alias}",
     "tooltip-format": "{controller_alias}\n{num_connections} connected",
     "on-click": "bluetui"
   },
 
   "pulseaudio": {
-    "format": "VOL {volume}%",
-    "format-bluetooth": "BT-VOL {volume}%",
-    "format-muted": "MUTED",
+    "format": "󰓃 {volume}%",
+    "format-bluetooth": "󰦢  {volume}%",
+    "format-muted": "󰓄 MUTED",
     "format-source": "{volume}%",
     "format-source-muted": "MUTED",
     "on-click": "pavucontrol"
   },
 
   "backlight": {
-    "format": "DISP {percent}%"
+    "format": "󰃞  {percent}%"
   },
 
   "tray": {
