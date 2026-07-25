@@ -1,4 +1,5 @@
 export TERMINAL=kitty
+export VISUAL=nvim
 export EDITOR=nvim
 export BROWSER=firefox
 
@@ -17,5 +18,3 @@ export XDG_SESSION_TYPE="wayland"
 
 export SWAY_UNSUPPORTED_GPU=true
 
-export MANPAGER="nvim +Man!"
-export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow'

@@ -1,7 +1,137 @@
-# If not running interactively, don't do anything
+# Exit early for non-interactive shells
 [[ $- != *i* ]] && return
 
-alias ls='ls --color=auto'
-alias grep='grep --color=auto'
+# ----- History -----
+HISTSIZE=100000
+HISTFILESIZE=200000
+HISTCONTROL=ignoredups:erasedups
+HISTIGNORE="ls:cd:pwd:exit:clear:history"
+PROMPT_COMMAND='history -a; history -n'
+
+shopt -s histappend
+
+# ----- Completion -----
+bind 'set completion-ignore-case on'
+bind 'set show-all-if-ambiguous on'
+bind 'set match-hidden-files off'
+bind 'TAB:menu-complete'
+
+# ----- Shell behavior -----
+shopt -s cdspell
+shopt -s autocd
+shopt -s globstar
+shopt -s checkwinsize
+shopt -s dotglob
+shopt -s extglob
+
+# ----- Environment -----
+export PAGER=less
+export LESS='-R'
+export MANPAGER="nvim +Man!"
+export FZF_DEFAULT_COMMAND='fd --type f'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+# ----- Prompt -----
 PS1='[\W]-> '
-fortune | cowsay
+
+# ----- Navigation -----
+cdpr() {
+  cd "$HOME/Projects${1:+/$*}"
+}
+
+mkcd() {
+  mkdir -p "$1" && cd "$1"
+}
+
+# ----- Utilities -----
+serve() {
+  python3 -m http.server "${1:-8000}"
+}
+
+extract() {
+  case "$1" in
+    *.tar.bz2) tar xjf "$1" ;;
+    *.tar.gz|*.tgz) tar xzf "$1" ;;
+    *.tbz2) tar xjf "$1" ;;
+    *.tar) tar xf "$1" ;;
+    *.zip) unzip "$1" ;;
+    *.7z) 7z x "$1" ;;
+    *.rar) unrar x "$1" ;;
+    *.gz) gunzip "$1" ;;
+    *.bz2) bunzip2 "$1" ;;
+    *) echo "Unsupported archive: $1" ;;
+  esac
+}
+
+psg() {
+  ps aux | grep -i --color=auto "$1"
+}
+
+# ----- Directory shortcuts -----
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
+alias reload='source ~/.bashrc'
+
+# ----- File listing -----
+alias ls='ls --color=auto'
+alias ll='ls -lh'
+alias la='ls -A'
+alias l='ls -CF'
+alias lt='ls -ltrh'
+
+# ----- Search -----
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+
+# ----- Git -----
+alias g='git'
+alias gs='git status'
+alias ga='git add'
+alias gaa='git add .'
+alias gc='git commit'
+alias gca='git commit --amend'
+alias gco='git checkout'
+alias gb='git branch'
+alias gd='git diff'
+alias gl='git log --oneline --graph --decorate --all'
+alias gp='git push'
+alias gpl='git pull'
+alias gst='git stash'
+alias gstp='git stash pop'
+
+# ----- Docker -----
+alias ld='lazydocker'
+
+# ----- Terminal UI -----
+alias lg='lazygit'
+
+# ----- Project shortcuts -----
+alias lspr="ls -la $HOME/Projects"
+
+# ----- Common commands -----
+alias c='clear'
+alias h='history'
+alias j='jobs'
+alias df='df -h'
+alias du='du -sh'
+alias free='free -h'
+alias ports='ss -tulpen'
+alias path='echo "$PATH" | tr ":" "\n"'
+
+# ----- Networking -----
+alias myip='curl -s ifconfig.me'
+alias pingg='ping -c 5 google.com'
+
+# ----- Safety -----
+alias cp='cp -i'
+alias mv='mv -i'
+alias rm='rm -I'
+
+# ----- Process helpers -----
+alias psg='ps aux | grep -i'
+
+# ----- Disk usage -----
+alias biggest='du -ah . | sort -rh | head -20'
