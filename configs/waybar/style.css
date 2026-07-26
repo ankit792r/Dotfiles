@@ -121,5 +121,5 @@ button:hover {
 
 #submap,
 #waybar > box:nth-child(2) > box:nth-child(3) > * > label {
-  padding: 0 6px;
+  padding: 0 8px;
 }

@@ -75,9 +75,9 @@
   },
 
   "bluetooth": {
-    "format": " {status}",
-    "format-disabled": "󰂲 OFF",
-    "format-connected": " {device_alias}",
+    "format": " {status}",
+    "format-disabled": " OFF",
+    "format-connected": " {device_alias}",
     "tooltip-format": "{controller_alias}\n{num_connections} connected",
     "on-click": "bluetui"
   },
@@ -92,7 +92,7 @@
   },
 
   "backlight": {
-    "format": "󰃞  {percent}%"
+    "format": "󰃠  {percent}%"
   },
 
   "tray": {
