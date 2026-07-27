@@ -1,6 +1,7 @@
 {
   "layer":"top",
   "position": "top",
+  // "spacing": 8,
   "height": 28,
   "modules-left": [
     "niri/workspaces",
@@ -8,6 +9,7 @@
   ],
   "modules-center": [],
   "modules-right": [
+    "mpris",
     "pulseaudio",
     "backlight",
     "disk#root",
@@ -51,7 +53,7 @@
   "temperature": {
     "critical-threshold": 80,
     "format": " {temperatureC}°C"
-   },
+  },
 
   "battery": {
     "states": {
@@ -92,12 +94,28 @@
   },
 
   "backlight": {
-    "format": "󰃠  {percent}%"
+    "format": "  {percent}%",
+    "interval": 10,
+    "on-scroll-up": "brightnessctl set +1%",
+    "on-scroll-down": "brightnessctl set 1%-"
   },
 
   "tray": {
     "icon-size": 18,
     "spacing": 5
+  },
+
+  "mpris": {
+    "format": "{player_icon} {title}",
+    "max-length": 50,
+    "format-paused": "{status_icon} <i>{title}</i>",
+    "player-icons": {
+      "default": "▶",
+      "mpv": "🎵"
+    },
+    "status-icons": {
+      "paused": "⏸"
+    }
   }
 }
 
