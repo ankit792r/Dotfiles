@@ -11,10 +11,10 @@ PROMPT_COMMAND='history -a; history -n'
 shopt -s histappend
 
 # ----- Completion -----
-bind 'set completion-ignore-case on'
-bind 'set show-all-if-ambiguous on'
-bind 'set match-hidden-files off'
-bind 'TAB:menu-complete'
+# bind 'set completion-ignore-case on'
+# bind 'set show-all-if-ambiguous on'
+# bind 'set match-hidden-files off'
+# bind 'TAB:menu-complete'
 
 # ----- Shell behavior -----
 shopt -s cdspell
@@ -45,7 +45,8 @@ mkcd() {
 
 # ----- Utilities -----
 serve() {
-  python3 -m http.server "${1:-8000}"
+  mkdir -p "$HOME/Public"
+  python3 -m http.server "${1:-8000}" -d "$HOME/Public"
 }
 
 extract() {
@@ -61,10 +62,6 @@ extract() {
     *.bz2) bunzip2 "$1" ;;
     *) echo "Unsupported archive: $1" ;;
   esac
-}
-
-psg() {
-  ps aux | grep -i --color=auto "$1"
 }
 
 # ----- Directory shortcuts -----
