@@ -1,5 +1,7 @@
 #!/bin/bash
 
+TERMINAL="${TERMINAL:-xterm}"
+
 MENU="󰖩  WiFi
   Bluetooth
 󰕾  Audio
@@ -11,31 +13,39 @@ MENU="󰖩  WiFi
 
 CHOICE=$(echo "$MENU" | rofi -no-show-icons -dmenu -p "System" -theme-str 'window { width: 12em; }')
 
+term_run() {
+    "$TERMINAL" "$@"
+}
+
 case "$CHOICE" in
     *WiFi)
-        kitty --title "sysmenu-wifi" nmtui
+        if command -v wlctl >/dev/null 2>&1; then
+            term_run --title "sysmenu-wifi" wlctl
+        else
+            term_run --title "sysmenu-wifi" nmtui
+        fi
         ;;
     *Bluetooth)
-        kitty --title "sysmenu-bt" bluetoothctl
+        term_run --title "sysmenu-bt" bluetoothctl
         ;;
-      *Audio)
+    *Audio)
         pavucontrol
         ;;
     *Services)
-        kitty --title "sysmenu-services" bash -c \
+        term_run --title "sysmenu-services" bash -c \
             "systemctl --type=service | less"
         ;;
     *Processes*)
-        kitty --title "sysmenu-btop" htop
+        term_run --title "sysmenu-btop" htop
         ;;
     *System\ Info)
-        kitty --title "sysmenu-info" fastfetch
+        term_run --title "sysmenu-info" fastfetch
         ;;
     *Install\ Package)
-        kitty --title "sysmenu-install" install-package
+        term_run --title "sysmenu-install" install-package
         ;;
     *Remove\ Package)
-        kitty --title "sysmenu-remove" remove-package
+        term_run --title "sysmenu-remove" remove-package
         ;;
 esac
 
