@@ -52,7 +52,7 @@ return {
             {
               win = "preview",
               border = "single",
-              width = 0.5,
+              width = 0.65,
             },
           },
         },
