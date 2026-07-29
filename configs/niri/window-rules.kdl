@@ -29,11 +29,10 @@ window-rule {
   match title="^sysmenu-*"
   open-floating true
   open-focused true
-  opacity 1.0
   default-column-width { fixed 1080; }
   default-window-height { fixed 720; }
   background-effect {
-    blur false
+    blur true
     xray false
   }
 }
