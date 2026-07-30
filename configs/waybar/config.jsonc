@@ -110,8 +110,10 @@
     "max-length": 50,
     "format-paused": "{status_icon} <i>{title}</i>",
     "player-icons": {
-      "default": "▶",
-      "mpv": "🎵"
+      "default": "󰝚",
+      "spotify": "",
+      "mpv": "󰎆",
+      "firefox": "󰈹"
     },
     "status-icons": {
       "paused": "⏸"
