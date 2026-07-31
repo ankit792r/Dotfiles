@@ -36,8 +36,13 @@ binds {
   Mod+Ctrl+K     { move-window-up; }
   Mod+Ctrl+L     { move-column-right; }
 
-  Mod+Shift+H { focus-column-first; }
-  Mod+Shift+L  { focus-column-last; }
+  Mod+Ctrl+Shift+Left   { move-column-to-monitor-left; }
+  Mod+Ctrl+Shift+Down   { move-column-to-monitor-down; }
+  Mod+Ctrl+Shift+Up     { move-column-to-monitor-up; }
+  Mod+Ctrl+Shift+Right  {move-column-to-monitor-right; }
+
+  Mod+G { focus-column-first; }
+  Mod+SemiColon  { focus-column-last; }
 
   Mod+Page_Down      { focus-workspace-down; }
   Mod+Page_Up        { focus-workspace-up; }
