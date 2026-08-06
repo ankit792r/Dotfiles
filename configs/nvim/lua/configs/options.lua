@@ -26,7 +26,6 @@ vim.opt.gdefault = true
 vim.opt.cursorline = true
 vim.opt.signcolumn = "yes"
 vim.opt.showmatch = true
-vim.opt.showmode = false
 vim.opt.showcmd = true
 vim.opt.laststatus = 3
 vim.opt.scrolloff = 4

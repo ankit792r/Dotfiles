@@ -3,6 +3,10 @@ vim.keymap.set("n", "<leader>e", ":Ex<CR>")
 vim.keymap.set("n", "<leader>q", ":q<CR>")
 vim.keymap.set("n", "<leader>Q", ":wq<CR>")
 
+-- Use jj to ecape
+vim.keymap.set("n", "<leader>Q", ":wq<CR>")
+vim.keymap.set("i", "jj", "<Esc>")
+
 local function map_window(lhs, dir)
 	vim.keymap.set("n", lhs, "<C-w>" .. dir)
 
