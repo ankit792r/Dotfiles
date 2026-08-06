@@ -76,10 +76,13 @@ return {
   },
 
   keys = {
+    { "<leader>fp", function() Snacks.picker.projects() end, desc = "Projects" },
     {
       "<leader><space>",
       function()
-        Snacks.picker.smart()
+        -- Snacks.picker.files()
+        
+        Snacks.picker.recent({ hidden = true, nofile = true, filter = { cwd = true }})
       end,
       desc = "Smart Find Files",
     },

@@ -10,12 +10,6 @@ return {
 		end,
 	},
 
-	{
-		"chrisgrieser/nvim-recorder",
-		-- dependencies = "rcarriga/nvim-notify", -- optional
-		opts = {}, -- required even with default settings, since it calls `setup()`
-	},
-
 	-- Auto Save
 	{
 		"okuuva/auto-save.nvim",
@@ -24,14 +18,6 @@ return {
 		event = { "InsertLeave", "TextChanged" },
 		opts = {
 			enabled = true,
-			execute_message = {
-				enabled = true,
-				message = function()
-					return ("saved at " .. vim.fn.strftime("%H:%M:%S"))
-				end,
-				dim = 0.18,
-				cleaning_interval = 1250,
-			},
 			trigger_events = { -- See :h events
 				immediate_save = { "BufLeave", "FocusLost", "QuitPre", "VimSuspend" },
 				defer_save = { "InsertLeave", "TextChanged" },
@@ -67,20 +53,5 @@ return {
 			},
 		},
 	},
-
-	{
-		"hedyhli/outline.nvim",
-		config = function()
-			vim.keymap.set("n", "<leader>o", "<cmd>Outline<CR>", { desc = "Toggle Outline" })
-
-			require("outline").setup({
-				show_relative_numbers = true,
-				auto_width = {
-					enabled = true,
-					max_width = 40,
-					include_symbol_details = true,
-				},
-			})
-		end,
-	},
 }
+
