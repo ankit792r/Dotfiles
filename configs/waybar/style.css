@@ -1,6 +1,6 @@
 
 /* Rosé Pine Palette */
-@define-color base rgba(0, 0, 0, 0.6);
+@define-color base rgba(0, 0, 0, 0.5);
 @define-color surface #1f1d2e;
 @define-color overlay #26233a;
 @define-color muted #6e6a86;
@@ -130,7 +130,7 @@ button:hover {
 }
 
 #disk {
-  color: @pine;
+  color: @foam;
 }
 
 #bluetooth {
@@ -156,7 +156,7 @@ button:hover {
 
 #battery.charging,
 #battery.plugged {
-  color: @foam;
+  color: @pine;
 }
 
 #battery.warning:not(.charging),

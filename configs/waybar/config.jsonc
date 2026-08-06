@@ -77,8 +77,8 @@
     },
     "format": "󰁹 {capacity}%",
     "format-full": "󰁹 {capacity}%",
-    "format-charging": "󰁹 {capacity}%",
-    "format-plugged": "󰁹 {capacity}%"
+    "format-charging": "󰂄 {capacity}%",
+    "format-plugged": "󰂄 {capacity}%"
   },
 
   "network": {
@@ -86,7 +86,7 @@
     "format-ethernet": "󰈀  {ipaddr}/{cidr}",
     "tooltip-format": "{ifname} via {gwaddr}",
     "format-linked": "{ifname} (No IP)",
-    "format-disconnected": "󰤭  Offline",
+    "format-disconnected": "󰤦  Disconnected",
     "format-alt": "{ifname}: {ipaddr}/{cidr}",
     "on-click": "wlctl"
   },
