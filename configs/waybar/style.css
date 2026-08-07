@@ -1,27 +1,26 @@
+/* Moonfly Palette */
+@define-color base rgba(0, 0, 0, 0.7);
+@define-color surface #1b1b1b;
+@define-color overlay #303030;
+@define-color muted #7c8f8f;
 
-/* Rosé Pine Palette */
-@define-color base rgba(0, 0, 0, 0.5);
-@define-color surface #1f1d2e;
-@define-color overlay #26233a;
-@define-color muted #6e6a86;
+@define-color text #c6c6c6;
+@define-color subtle #949494;
 
-@define-color text #e0def4;
-@define-color subtle #908caa;
-
-@define-color love #eb6f92;
-@define-color gold #f6c177;
-@define-color rose #ebbcba;
-@define-color pine #31748f;
-@define-color foam #9ccfd8;
-@define-color iris #c4a7e7;
-@define-color highlight #403d52;
+@define-color love #ff5d5d;
+@define-color gold #e3c78a;
+@define-color rose #ff966c;
+@define-color pine #8cc85f;
+@define-color foam #79dac8;
+@define-color iris #80a0ff;
+@define-color highlight #323437;
 
 /* Theme aliases */
 @define-color bg @base;
 @define-color bg-hover @highlight;
 @define-color fg @text;
 @define-color separator @overlay;
-@define-color accent @foam;
+@define-color accent @iris;
 @define-color warning @love;
 
 * {

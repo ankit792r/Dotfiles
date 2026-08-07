@@ -14,7 +14,7 @@ opt.smarttab = true
 opt.breakindent = true
 opt.wrap = false
 opt.backspace = { "start", "eol", "indent" }
--- opt.fillchars = { eob = " ", vert = " ", fold = " " }
+opt.fillchars = { eob = " " } -- vert = " ", fold = " " }
 
 opt.ignorecase = true
 opt.smartcase = true
@@ -46,9 +46,11 @@ opt.splitkeep = "cursor"
 opt.mouse = ""
 opt.winborder = "single"
 
--- opt.showmode = true
--- opt.cmdheight = 0
+opt.showmode = true
+opt.cmdheight = 0
 
+vim.cmd([[ autocmd RecordingEnter * set cmdheight=1 ]])
+vim.cmd([[ autocmd RecordingLeave * set cmdheight=0 ]])
 
 -- Fix markdown indentation settings
 vim.g.markdown_recommended_style = 0

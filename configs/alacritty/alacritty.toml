@@ -14,7 +14,7 @@ size = 15.0
 
 [font.offset]
 x = 0
-y = 2
+y = 0
 
 [font.normal]
 family = "Iosevka Nerd Font"

@@ -4,8 +4,10 @@
   // "spacing": 8,
   "height": 28,
   "modules-left": [
-    "niri/workspaces",
-    "niri/window"
+    // "niri/workspaces",
+    // "niri/window"
+    "sway/workspaces",
+    "sway/mode"
   ],
   "modules-center": [],
   "modules-right": [

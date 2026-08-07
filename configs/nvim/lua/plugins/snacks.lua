@@ -80,8 +80,8 @@ return {
     {
       "<leader><space>",
       function()
-        -- Snacks.picker.files()
-        Snacks.picker.recent({ hidden = true, nofile = true, filter = { cwd = true } })
+        Snacks.picker.files()
+        -- Snacks.picker.recent({ hidden = true, nofile = true, filter = { cwd = true } })
       end,
       desc = "Smart Find Files",
     },
