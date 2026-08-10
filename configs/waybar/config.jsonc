@@ -7,6 +7,7 @@
     // "niri/workspaces",
     // "niri/window"
     "sway/workspaces",
+    "sway/window",
     "sway/mode"
   ],
   "modules-center": [],
