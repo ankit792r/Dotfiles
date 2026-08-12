@@ -17,12 +17,3 @@ export XCURSOR_THEME="Bibata-Modern-Classic"
 export XDG_SESSION_TYPE="wayland"
 
 export SWAY_UNSUPPORTED_GPU=true
-
-
-export WLR_DRM_NO_MODIFIERS=1
-export WLR_RENDERER="vulkan"
-export XDG_CURRENT_DESKTOP="sway"
-export MOZ_ENABLE_WAYLAND=1
-export QT_QPA_PLATFORM="wayland"
-export CLUTTER_BACKEND="wayland"
-export SDL_VIDEODRIVER="wayland"
