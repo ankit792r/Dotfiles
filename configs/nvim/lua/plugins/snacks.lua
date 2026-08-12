@@ -189,5 +189,12 @@ return {
       end,
       desc = "Undo History",
     },
+    {
+      "<leader>s/",
+      function()
+        Snacks.picker.search_history()
+      end,
+      desc = "Search History"
+    }
   },
 }
