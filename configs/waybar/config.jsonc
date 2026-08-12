@@ -70,7 +70,14 @@
 
   "temperature": {
     "critical-threshold": 80,
-    "format": " {temperatureC}°C"
+    "format": "{icon} {temperatureC}°C",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
   },
 
   "battery": {
@@ -78,19 +85,41 @@
       "warning": 30,
       "critical": 20
     },
-    "format": "󰁹 {capacity}%",
-    "format-full": "󰁹 {capacity}%",
+    "format": "{icon} {capacity}%",
+    "format-full": "{icon} {capacity}%",
     "format-charging": "󰂄 {capacity}%",
-    "format-plugged": "󰂄 {capacity}%"
+    "format-plugged": "󰂄 {capacity}%",
+    "format-icons": [
+      "󰁺",
+      "󰁻",
+      "󰁼",
+      "󰁽",
+      "󰁾",
+      "󰁿",
+      "󰂀",
+      "󰂁",
+      "󰂂",
+      "󰁹"
+    ]
   },
 
+
   "network": {
-    "format-wifi": "󰤥  {essid}",
+    "format-wifi": "{icon}  {essid}",
     "format-ethernet": "󰈀  {ipaddr}/{cidr}",
     "tooltip-format": "{ifname} via {gwaddr}",
-    "format-linked": "{ifname} (No IP)",
-    "format-disconnected": "󰤦  Disconnected",
+    "format-linked": "󰤨  {ifname} (No IP)",
+    "format-disconnected": "󰤭  Disconnected",
     "format-alt": "{ifname}: {ipaddr}/{cidr}",
+
+    "format-icons": [
+      "󰤯",
+      "󰤟",
+      "󰤢",
+      "󰤥",
+      "󰤨"
+    ],
+
     "on-click": "wlctl"
   },
 
@@ -112,7 +141,12 @@
   },
 
   "backlight": {
-    "format": "  {percent}%",
+    "format": "{icon}  {percent}%",
+    "format-icons": [
+      "󰃞",
+      "󰃟",
+      "󰃠"
+    ],
     "interval": 10,
     "on-scroll-up": "brightnessctl set +1%",
     "on-scroll-down": "brightnessctl set 1%-"
