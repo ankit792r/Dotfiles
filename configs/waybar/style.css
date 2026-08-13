@@ -4,7 +4,7 @@
 @define-color overlay #303030;
 @define-color muted #7c8f8f;
 
-@define-color text #c6c6c6;
+@define-color text rgba(198, 198, 198, 0.7);
 @define-color subtle #949494;
 
 @define-color love #ff5d5d;
@@ -28,7 +28,7 @@
   border-radius: 0;
   min-height: 0;
   font-family: "Iosevka Nerd Font";
-  font-weight: 600;
+  font-weight: 700;
   font-size: 14px;
 }
 
@@ -112,33 +112,6 @@ button:hover {
   padding: 0 8px;
 }
 
-#mpris {
-  color: @rose;
-}
-
-#clock {
-  color: @foam;
-}
-
-#cpu {
-  color: @gold;
-}
-
-#memory {
-  color: @iris;
-}
-
-#disk {
-  color: @foam;
-}
-
-#bluetooth {
-  color: @foam;
-}
-
-#network {
-  color: @foam;
-}
 
 #network.disconnected {
   color: @warning;
@@ -147,10 +120,6 @@ button:hover {
 #network.disabled {
   background: @warning;
   color: @base;
-}
-
-#battery {
-  color: @gold;
 }
 
 #battery.charging,
@@ -163,16 +132,8 @@ button:hover {
   color: @warning;
 }
 
-#temperature {
-  color: @rose;
-}
-
 #temperature.critical {
   color: @warning;
-}
-
-#pulseaudio {
-  color: @iris;
 }
 
 #tray {
