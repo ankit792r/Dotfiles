@@ -1,18 +1,19 @@
 {
   "layer":"top",
   "position": "top",
-  // "spacing": 8,
   "height": 28,
   "modules-left": [
     // "niri/workspaces",
     // "niri/window"
+    "clock",
+    "sway/mode",
     "sway/workspaces",
-    "sway/window",
-    "sway/mode"
+    "sway/window"
   ],
-  "modules-center": [],
+  "modules-center": [
+    "mpris"
+  ],
   "modules-right": [
-    "mpris",
     "pulseaudio",
     "backlight",
     "disk#root",
@@ -22,18 +23,17 @@
     "memory",
     "temperature",
     "battery",
-    "clock",
     "tray"
   ],
 
   "clock": {
-    "format": "{:%I:%M %p : %a %b %d %Y}",
-    "format-alt": "{:%H:%M : %a %b %d %Y}",
+    "format": "{:%I:%M %p}",
+    "format-alt": "{:%H:%M}",
     "tooltip": true,
     "tooltip-format": "<tt>{calendar}</tt>",
     "timezone": "Asia/Kolkata",
     "calendar": {
-      "mode": "year",
+      "mode": "month",
       "mode-mon-col": 3,
       "weeks-pos": "right",
       "on-scroll": 1,
