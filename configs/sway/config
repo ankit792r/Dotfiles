@@ -112,6 +112,10 @@ exec --no-startup-id /usr/lib/xdg-desktop-portal
 #
 # Workspaces:
 #
+    # Switch workspaces with Tab and Shift Tab
+    bindsym $mod+Tab workspace next
+    bindsym $mod+Shift+Tab workspace prev
+
     # Switch to workspace
     bindsym $mod+u workspace number 1
     bindsym $mod+i workspace number 2
