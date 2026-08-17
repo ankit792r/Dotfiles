@@ -3,12 +3,12 @@
   "position": "top",
   "height": 28,
   "modules-left": [
-    // "niri/workspaces",
-    // "niri/window"
     "clock",
-    "sway/mode",
-    "sway/workspaces",
-    "sway/window"
+    "niri/workspaces",
+    "niri/window"
+    // "sway/mode",
+    // "sway/workspaces",
+    // "sway/window"
   ],
   "modules-center": [
     "mpris"
