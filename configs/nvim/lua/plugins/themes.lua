@@ -9,6 +9,7 @@ return {
       vim.o.pumborder = "single"
       vim.g.moonflyTransparent = true
       vim.g.moonflyNormalFloat = true
+      vim.g.moonflyWinSeparator = 2
       vim.cmd("colorscheme moonfly")
     end,
   },
