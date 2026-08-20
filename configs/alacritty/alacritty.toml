@@ -38,7 +38,7 @@ style = "Bold Italic"
 padding = { x = 8, y = 8 }
 decorations = "None"
 dynamic_padding = true
-opacity = 0.7
+opacity = 0.8
 
 [cursor]
 style = { shape = "Beam", blinking = "On" }
