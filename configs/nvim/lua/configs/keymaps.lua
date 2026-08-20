@@ -10,7 +10,6 @@ map("n", "<leader>q", ":q<CR>")
 map("n", "<leader>Q", ":wq<CR>")
 
 -- Use jj to ecape
-map("n", "<leader>Q", ":wq<CR>")
 map("i", "jj", "<Esc>")
 
 local function map_window(lhs, dir)
@@ -73,3 +72,10 @@ map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" })
 map("n", "<leader>-", "<C-W>s", { desc = "Split Window Below", remap = true })
 map("n", "<leader>|", "<C-W>v", { desc = "Split Window Right", remap = true })
 map("n", "<leader>wd", "<C-W>c", { desc = "Delete Window", remap = true })
+
+-- Enter terminal mode
+vim.keymap.set("n", "<leader>t", "<cmd>terminal<CR>")
+vim.keymap.set("n", "<leader>tv", "<cmd>vsplit | terminal<CR>")
+
+-- Exit terminal mode
+vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]])
