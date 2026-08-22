@@ -1,30 +1,20 @@
 local map = vim.keymap.set
 
 -- quit
-map("n", "<leader>qq", "<cmd>qa<cr>", { desc = "Quit All" })
+map("n", "<leader>q", ":q<CR>")
+map("n", "<leader>Q", ":wq<CR>")
 
 -- Open Netrw Explorer
 map("n", "<leader>e", ":Ex<CR>")
 
-map("n", "<leader>q", ":q<CR>")
-map("n", "<leader>Q", ":wq<CR>")
-
 -- Use jj to ecape
 map("i", "jj", "<Esc>")
 
-local function map_window(lhs, dir)
-	map("n", lhs, "<C-w>" .. dir)
-
-	map("t", lhs, function()
-		vim.cmd("wincmd " .. dir)
-	end)
-end
-
 -- Navigate through window
-map_window("<C-h>", "h")
-map_window("<C-j>", "j")
-map_window("<C-k>", "k")
-map_window("<C-l>", "l")
+map("n", "<C-h>", "<C-w>h")
+map("n", "<C-j>", "<C-w>j")
+map("n", "<C-k>", "<C-w>k")
+map("n", "<C-l>", "<C-w>l")
 
 -- map("n", "<esc>", "<cmd>noh<CR>")
 map({ "i", "n", "s" }, "<esc>", function()
@@ -74,8 +64,9 @@ map("n", "<leader>|", "<C-W>v", { desc = "Split Window Right", remap = true })
 map("n", "<leader>wd", "<C-W>c", { desc = "Delete Window", remap = true })
 
 -- Enter terminal mode
-vim.keymap.set("n", "<leader>t", "<cmd>terminal<CR>")
-vim.keymap.set("n", "<leader>tv", "<cmd>vsplit | terminal<CR>")
+map("n", "<leader>t", "<cmd>split | terminal<CR>")
+map("n", "<leader>tv", "<cmd>vsplit | terminal<CR>")
 
 -- Exit terminal mode
-vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]])
+map("t", "<Esc>", [[<C-\><C-n>]])
+map("t", "<C-[>", [[<C-\><C-n>]])
