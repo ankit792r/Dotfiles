@@ -46,8 +46,15 @@ output "eDP-1" {
     position x=1280 y=0
 }
 
+overview {
+  zoom 0.65
+  workspace-shadow {
+    off
+  }
+}
+
 layout {
-  gaps 4
+  gaps 0
 
   background-color "transparent"
   center-focused-column "never"
@@ -283,7 +290,7 @@ binds {
     Mod+Backslash hotkey-overlay-title="Show system menu" { spawn-sh "uwsm-app system-menu"; }
 
 
-    // Mod+O repeat=false { toggle-overview; }
+    Mod+Shift+O repeat=false { toggle-overview; }
     Mod+Q repeat=true { close-window; }
     Mod+B hotkey-overlay-title="Open Browser" { spawn "firefox"; }
     Mod+E hotkey-overlay-title="Open file manager" { spawn-sh "yazi"; }
