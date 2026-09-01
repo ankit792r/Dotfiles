@@ -7,16 +7,13 @@ border_symbol = " "
 border_style  = { fg = "reset" } 
 title_format  = "" # Removes the "Current Directory" title from the top border area
 
-preview_hovered = { underline = true }
-
+preview = { underline = true }
 
 # : Indicator of hovered file
 [indicator]
 parent  = { underline = true }
-preview = { hidden  = true }
 padding = { open= "█", close= "█" }
 
 [status]
 sep_left  = { open = "", close = "" }
 sep_right = { open = "", close = "" }
-
