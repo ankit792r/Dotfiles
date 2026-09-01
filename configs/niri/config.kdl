@@ -111,7 +111,7 @@ environment {
   GBM_BACKEND "nvidia-drm"
   __GLX_VENDOR_LIBRARY_NAME "nvidia"
   OZONE_PLATFORM "wayland"
-  TERMINAL "alacritty"
+  TERMINAL "foot"
   BROWSER "firefox"
 }
 
@@ -283,7 +283,7 @@ layer-rule {
 }
 
 binds {
-    Mod+Return hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }
+    Mod+Return hotkey-overlay-title="Open a Terminal: foot" { spawn "foot"; }
     Mod+Space hotkey-overlay-title="Run an Application" { spawn-sh "uwsm-app app-menu"; } 
     Mod+Alt+L hotkey-overlay-title="Lock the Screen" { spawn-sh "pkill hyprlock || hyprlock"; }
     Mod+Backspace hotkey-overlay-title="Show power menu" { spawn-sh "uwsm-app power-menu"; }
