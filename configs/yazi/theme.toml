@@ -1,5 +1,6 @@
 [flavor]
-dark = "rose-pine" # Options: "rose-pine", "rose-pine-moon", or light = "rose-pine-dawn"
+# dark = "rose-pine" # Options: "rose-pine", "rose-pine-moon", or light = "rose-pine-dawn"
+dark = "vague"
 
 [mgr]
 # Remove borders by setting symbol to empty and style to hidden
