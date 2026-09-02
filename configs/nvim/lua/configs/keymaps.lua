@@ -16,6 +16,12 @@ map("n", "<C-j>", "<C-w>j")
 map("n", "<C-k>", "<C-w>k")
 map("n", "<C-l>", "<C-w>l")
 
+-- Navigate windows from terminal mode
+vim.keymap.set('t', '<C-h>', [[<C-\><C-n><C-w>h]])
+vim.keymap.set('t', '<C-j>', [[<C-\><C-n><C-w>j]])
+vim.keymap.set('t', '<C-k>', [[<C-\><C-n><C-w>k]])
+vim.keymap.set('t', '<C-l>', [[<C-\><C-n><C-w>l]])
+
 -- map("n", "<esc>", "<cmd>noh<CR>")
 map({ "i", "n", "s" }, "<esc>", function()
   vim.cmd("noh")
@@ -64,7 +70,7 @@ map("n", "<leader>|", "<C-W>v", { desc = "Split Window Right", remap = true })
 map("n", "<leader>wd", "<C-W>c", { desc = "Delete Window", remap = true })
 
 -- Enter terminal mode
-map("n", "<leader>t", "<cmd>split | terminal<CR>")
+map("n", "<leader>th", "<cmd>split | terminal<CR>")
 map("n", "<leader>tv", "<cmd>vsplit | terminal<CR>")
 
 -- Exit terminal mode

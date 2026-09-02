@@ -1,7 +1,7 @@
 input {
   keyboard {
     xkb {
-      options "ctrl:nocaps"
+      // options "ctrl:nocaps"
     }
 
     repeat-delay 200
@@ -121,6 +121,7 @@ environment {
 // See the binds section below for more spawn examples.
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
+spawn-at-startup "gammastep" "-l" "19.07:72.87" "-m" "wayland"
 spawn-sh-at-startup "uwsm-app -- waybar"
 spawn-sh-at-startup "uwsm-app -- mako"
 spawn-sh-at-startup "uwsm-app -- hypridle"
