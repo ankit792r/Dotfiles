@@ -1,3 +1,6 @@
+-- disable double click mouse
+vim.api.nvim_set_keymap("n", "<2-LeftMouse>", "", { noremap = true, silent = true })
+
 local map = vim.keymap.set
 
 -- quit
@@ -53,8 +56,8 @@ map("v", "<A-j>", ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", { desc 
 map("v", "<A-k>", ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", { desc = "Move Up" })
 
 -- buffers
-map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
-map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next Buffer" })
+map("n", "<Tab>", "<cmd>bnext<cr>", { desc = "Next Buffer" })
+map("n", "<S-Tab>", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
 
 map("n", "<leader>bd", "<cmd>:bd<cr>", { desc = "Delete Buffer and Window" })
 
@@ -76,3 +79,13 @@ map("n", "<leader>tv", "<cmd>vsplit | terminal<CR>")
 -- Exit terminal mode
 map("t", "<Esc>", [[<C-\><C-n>]])
 map("t", "<C-[>", [[<C-\><C-n>]])
+
+-- Remapping gj gk for wrapped line
+map("n", "j", "gj", { desc = "Down In Wrap", noremap = true, silent = true })
+map("n", "k", "gk", { desc = "Up In Wrap", noremap = true, silent = true })
+
+
+-- QuickFIx
+map("n", "<C-n>", ":cnext<cr>", { desc = "QuickFIx Next", noremap = true, silent = true })
+map("n", "<C-p>", ":cprev<cr>", { desc = "QuickFIx Prev", noremap = true, silent = true })
+map("n", "<C-q>", ":cclose<cr>", { desc = "QuickFIx Close", noremap = true, silent = false })
