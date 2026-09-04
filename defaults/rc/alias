@@ -1,0 +1,80 @@
+# tmux
+alias tnew="tmux new -s"
+alias tls="tmux ls"
+alias trename="tmux rename-session -t"
+alias ta="tmux a -t"
+
+## Arch
+alias pac="sudo pacman"
+alias up="sudo pacman -Syyu"
+alias ref="sudo pacman -Syy"
+alias dref="sudo pacman -Fy"
+alias search="pacman -Ss"
+alias pacs="pacman -Q | wc -l"
+alias list="pacman -Q"
+
+# ----- Directory shortcuts -----
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
+alias reload='source ~/.bashrc'
+
+# ----- File listing -----
+alias ls='ls --color=auto'
+alias ll='ls -lh'
+alias la='ls -A'
+alias l='ls -CF'
+alias lt='ls -ltrh'
+
+# ----- Search -----
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+
+# ----- Git -----
+alias g='git'
+alias gs='git status'
+alias ga='git add'
+alias gaa='git add .'
+alias gc='git commit'
+alias gca='git commit --amend'
+alias gco='git checkout'
+alias gb='git branch'
+alias gd='git diff'
+alias gl='git log --oneline --graph --decorate --all'
+alias gp='git push'
+alias gpl='git pull'
+alias gst='git stash'
+alias gstp='git stash pop'
+
+# ----- Docker -----
+alias ld='lazydocker'
+
+# ----- Terminal UI -----
+alias lg='lazygit'
+
+# ----- Project shortcuts -----
+alias lspr="ls -la $HOME/Projects"
+
+# ----- Common commands -----
+alias c='clear'
+alias h='history'
+alias j='jobs'
+alias df='df -h'
+alias du='du -sh'
+alias free='free -h'
+alias ports='ss -tulpen'
+alias path='echo "$PATH" | tr ":" "\n"'
+
+# ----- Networking -----
+alias myip='curl -s ifconfig.me'
+alias pingg='ping -c 5 google.com'
+
+# ----- Safety -----
+alias cp='cp -i'
+alias mv='mv -i'
+alias rm='rm -I'
+
+# ----- Disk usage -----
+alias biggest='du -ah . | sort -rh | head -20'
