@@ -10,12 +10,6 @@ PROMPT_COMMAND='history -a; history -n'
 
 shopt -s histappend
 
-# ----- Completion -----
-# bind 'set completion-ignore-case on'
-# bind 'set show-all-if-ambiguous on'
-# bind 'set match-hidden-files off'
-# bind 'TAB:menu-complete'
-
 # ----- Shell behavior -----
 shopt -s cdspell
 shopt -s autocd
@@ -32,19 +26,8 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 # ----- Prompt -----
 PS1='[\W]-> '
 
-# ----- Navigation -----
-cdpr() {
-  cd "$HOME/Projects${1:+/$*}"
-}
-
 mkcd() {
   mkdir -p "$1" && cd "$1"
-}
-
-# ----- Utilities -----
-serve() {
-  mkdir -p "$HOME/Public"
-  python3 -m http.server "${1:-8000}" -d "$HOME/Public"
 }
 
 sys() {
@@ -66,71 +49,29 @@ extract() {
   esac
 }
 
-# ----- Directory shortcuts -----
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
+# bash history with fzf
+fzf_history() {
+  local cmd
+  cmd=$(history | tac | awk '{
+      s=$0; sub(/^[[:space:]]*[0-9]+[[:space:]]+/, "", s);
+      if (!seen[s]++) print $0
+    }' | fzf --tiebreak=index --query="$READLINE_LINE" --height=50% --layout=reverse | \
+    sed 's/^[[:space:]]*[0-9]\+[[:space:]]*//')
 
-alias reload='source ~/.bashrc'
+  if [ -n "$cmd" ]; then
+    READLINE_LINE="$cmd"
+    READLINE_POINT=${#READLINE_LINE}
+  fi
+}
 
-# ----- File listing -----
-alias ls='ls --color=auto'
-alias ll='ls -lh'
-alias la='ls -A'
-alias l='ls -CF'
-alias lt='ls -ltrh'
+bind -x '"\C-r": fzf_history'
 
-# ----- Search -----
-alias grep='grep --color=auto'
-alias egrep='egrep --color=auto'
-alias fgrep='fgrep --color=auto'
+# Re-enable Ctrl+L to clear screen in Vi mode
+bind -m vi-insert '"\C-l": clear-screen'
+bind -m vi-command '"\C-l": clear-screen'
 
-# ----- Git -----
-alias g='git'
-alias gs='git status'
-alias ga='git add'
-alias gaa='git add .'
-alias gc='git commit'
-alias gca='git commit --amend'
-alias gco='git checkout'
-alias gb='git branch'
-alias gd='git diff'
-alias gl='git log --oneline --graph --decorate --all'
-alias gp='git push'
-alias gpl='git pull'
-alias gst='git stash'
-alias gstp='git stash pop'
+# Vi mode cursor changes
+bind 'set vi-ins-mode-string "\1\e[6 q\2"'
+bind 'set vi-cmd-mode-string "\1\e[2 q\2"'
 
-# ----- Docker -----
-alias ld='lazydocker'
-
-# ----- Terminal UI -----
-alias lg='lazygit'
-
-# ----- Project shortcuts -----
-alias lspr="ls -la $HOME/Projects"
-
-# ----- Common commands -----
-alias c='clear'
-alias h='history'
-alias j='jobs'
-alias df='df -h'
-alias du='du -sh'
-alias free='free -h'
-alias ports='ss -tulpen'
-alias path='echo "$PATH" | tr ":" "\n"'
-
-# ----- Networking -----
-alias myip='curl -s ifconfig.me'
-alias pingg='ping -c 5 google.com'
-
-# ----- Safety -----
-alias cp='cp -i'
-alias mv='mv -i'
-alias rm='rm -I'
-
-# ----- Process helpers -----
-alias psg='ps aux | grep -i'
-
-# ----- Disk usage -----
-alias biggest='du -ah . | sort -rh | head -20'
+source "$HOME/.alias"
