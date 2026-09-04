@@ -1,10 +1,10 @@
 /* Moonfly Palette */
-@define-color base rgba(20, 20, 21, 0.8);
+@define-color base rgba(0, 0, 0, 0.8);
 @define-color surface #1b1b1b;
 @define-color overlay #303030;
 @define-color muted #7c8f8f;
 
-@define-color text rgba(198, 198, 198, 0.7);
+@define-color text rgba(198, 198, 198, 0.8);
 @define-color subtle #606079;
 
 @define-color love #d8647e;

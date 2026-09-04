@@ -291,7 +291,7 @@ binds {
     Mod+Backslash hotkey-overlay-title="Show system menu" { spawn-sh "uwsm-app system-menu"; }
 
 
-    Mod+Shift+O repeat=false { toggle-overview; }
+    Mod+O repeat=false { toggle-overview; }
     Mod+Q repeat=true { close-window; }
     Mod+B hotkey-overlay-title="Open Browser" { spawn "firefox"; }
     Mod+E hotkey-overlay-title="Open file manager" { spawn-sh "yazi"; }
