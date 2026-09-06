@@ -272,7 +272,7 @@ layer-rule {
 // Bindings
 binds {
     Mod+Return hotkey-overlay-title="Open a Terminal: foot" { spawn "foot"; }
-    Mod+Shift+Return hotkey-overlay-title="Open Emacs" { spawn "emacs"; }
+    Mod+Shift+Return hotkey-overlay-title="Open Kitty" { spawn "kitty"; }
 
     Mod+Backspace hotkey-overlay-title="Show power menu" { spawn-sh "uwsm-app power-menu"; }
     Mod+Backslash hotkey-overlay-title="Show system menu" { spawn-sh "uwsm-app system-menu"; }
