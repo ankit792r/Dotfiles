@@ -16,8 +16,7 @@ opt.breakindent = true
 opt.wrap = false
 opt.backspace = { "start", "eol", "indent" }
 
-vim.opt.fillchars =
-{ eob = " ", vert = " ", horiz = " ", horizup = " ", horizdown = " ", vertleft = " ", vertright = " ", verthoriz = " " }
+vim.opt.fillchars = { eob = " " }
 
 opt.ignorecase = true
 opt.smartcase = true
