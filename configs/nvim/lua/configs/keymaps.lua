@@ -76,6 +76,10 @@ map("n", "<leader>wd", "<C-W>c", { desc = "Delete Window", remap = true })
 map("n", "<leader>th", "<cmd>split | terminal<CR>")
 map("n", "<leader>tv", "<cmd>vsplit | terminal<CR>")
 
+
+map("n", "<leader>vs", ":vsplit<CR>")
+map("n", "<leader>hs", ":split<CR>")
+
 -- Exit terminal mode
 map("t", "<Esc>", [[<C-\><C-n>]])
 map("t", "<C-[>", [[<C-\><C-n>]])

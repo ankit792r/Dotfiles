@@ -15,7 +15,9 @@ opt.smarttab = true
 opt.breakindent = true
 opt.wrap = false
 opt.backspace = { "start", "eol", "indent" }
-opt.fillchars = { eob = " " } -- vert = " ", fold = " " }
+
+vim.opt.fillchars =
+{ eob = " ", vert = " ", horiz = " ", horizup = " ", horizdown = " ", vertleft = " ", vertright = " ", verthoriz = " " }
 
 opt.ignorecase = true
 opt.smartcase = true
@@ -69,9 +71,9 @@ hl(0, "BlinkCmpMenuSelection", { link = "Search" })
 hl(0, "BlinkCmpLabelMatch", { link = "Search" })
 
 vim.diagnostic.config({
-  -- virtual_lines = true,
+  virtual_lines = true,
   virtual_text = false,
-  underline = true,
+  underline = false,
   update_in_insert = false,
   severity_sort = true,
   float = {

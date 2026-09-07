@@ -17,11 +17,6 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		lazy = false,
-		opts = function(_, opts)
-			opts.diagnostics = opts.diagnostics or {}
-			opts.diagnostics.virtual_text = false
-			opts.diagnostics.severity_sort = true
-		end,
 		config = function()
 			local map = function(mode, lhs, rhs, desc)
 				vim.keymap.set(mode, lhs, rhs, { desc = "LSP: " .. desc })
@@ -61,15 +56,6 @@ return {
 			-- Call Hierarchy
 			map("n", "gai", vim.lsp.buf.incoming_calls, "Incoming Calls")
 			map("n", "gao", vim.lsp.buf.outgoing_calls, "Outgoing Calls")
-
-			vim.diagnostic.config({
-				signs = true,
-				unerline = true,
-				upate_in_insert = true,
-				virtual_text = {
-					prefix = "■",
-				},
-			})
 		end,
 	},
 
