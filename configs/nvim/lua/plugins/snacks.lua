@@ -52,14 +52,14 @@ return {
             {
               win = "preview",
               border = "single",
-              width = 0.65,
+              width = 0.,
             },
           },
         },
       },
     },
   },
-  sort_lastused = false,
+  sort_lastused = true,
   win = {
     input = {
       keys = {

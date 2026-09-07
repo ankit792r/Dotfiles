@@ -54,8 +54,8 @@ vim.cmd([[highlight WinSeparator guibg = None]])
 vim.cmd([[highlight CursorLineNr guifg = #d8a657]])
 vim.cmd([[highlight MsgSeparator guifg = #d8a657]])
 
-vim.cmd([[ autocmd RecordingEnter * set cmdheight=1 ]])
-vim.cmd([[ autocmd RecordingLeave * set cmdheight=0 ]])
+-- vim.cmd([[ autocmd RecordingEnter * set cmdheight=1 ]])
+-- vim.cmd([[ autocmd RecordingLeave * set cmdheight=0 ]])
 vim.cmd(":hi statusline guibg=NONE")
 
 -- Fix markdown indentation settings
