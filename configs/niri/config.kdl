@@ -72,8 +72,7 @@ layout {
     // off
     width 2
     active-color "#7B8394"
-    inactive-color "#524f67"
-    urgent-color "#653636"
+    inactive-color "#3a3a46"
   }
 
   struts {
