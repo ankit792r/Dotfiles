@@ -26,45 +26,6 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 # ----- Prompt -----
 PS1='[\W]-> '
 
-mkcd() {
-  mkdir -p "$1" && cd "$1"
-}
-
-sys() {
-  sudo systemctl $1 $2
-}
-
-extract() {
-  case "$1" in
-    *.tar.bz2) tar xjf "$1" ;;
-    *.tar.gz|*.tgz) tar xzf "$1" ;;
-    *.tbz2) tar xjf "$1" ;;
-    *.tar) tar xf "$1" ;;
-    *.zip) unzip "$1" ;;
-    *.7z) 7z x "$1" ;;
-    *.rar) unrar x "$1" ;;
-    *.gz) gunzip "$1" ;;
-    *.bz2) bunzip2 "$1" ;;
-    *) echo "Unsupported archive: $1" ;;
-  esac
-}
-
-# bash history with fzf
-fzf_history() {
-  local cmd
-  cmd=$(history | tac | awk '{
-      s=$0; sub(/^[[:space:]]*[0-9]+[[:space:]]+/, "", s);
-      if (!seen[s]++) print $0
-    }' | fzf --tiebreak=index --query="$READLINE_LINE" --height=50% --layout=reverse | \
-    sed 's/^[[:space:]]*[0-9]\+[[:space:]]*//')
-
-  if [ -n "$cmd" ]; then
-    READLINE_LINE="$cmd"
-    READLINE_POINT=${#READLINE_LINE}
-  fi
-}
-
-bind -x '"\C-r": fzf_history'
 
 # Re-enable Ctrl+L to clear screen in Vi mode
 bind -m vi-insert '"\C-l": clear-screen'
@@ -75,3 +36,4 @@ bind 'set vi-ins-mode-string "\1\e[6 q\2"'
 bind 'set vi-cmd-mode-string "\1\e[2 q\2"'
 
 source "$HOME/.alias"
+source "$HOME/.functions"
