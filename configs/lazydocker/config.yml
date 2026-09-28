@@ -1,0 +1,18 @@
+gui:
+  theme:
+    activeBorderColor:
+      - "#aeaed1"
+      - "bold"
+    inactiveBorderColor:
+      - "#606079"
+    selectedLineBgColor:
+      - "#252530"
+    selectedRangeBgColor:
+      - "#252530"
+    optionsTextColor:
+      - "#606079"
+    defaultFgColor:
+      - "#cdcdcd"
+
+  border: "single"
+  nerdFontsVersion: "3"
