@@ -1,23 +1,25 @@
-font=JetBrainsMono Nerd Font 10
+# Font
+font=Iosevka Nerd Font 12
 
 # General layout
-width=360
+width=480
 height=120
-margin=10
+margin=4
 padding=6
-border-size=0
+border-size=2
 border-radius=0
-layer=overlay
-anchor=top-right
+layer=top
+anchor=top-center
 
-background-color=#1a1b26cc
-text-color=#c0caf5
-border-color=#34333f
+# Vague-inspired palette
+background-color=#141415f2
+text-color=#cdcdcd
+border-color=#3a3a46
 
 # Icons
 icons=1
 icon-path=/usr/share/icons
-max-icon-size=48
+max-icon-size=42
 
 # Behavior
 default-timeout=5000
@@ -25,21 +27,21 @@ ignore-timeout=0
 group-by=app-name
 
 # Progress bar
-progress-color=#283457
+progress-color=#4c4c5c
 
 # --- Urgency styling ---
+
 [urgency=low]
-background-color=#1a1b26cc
-text-color=#6e6a86
-border-color=#34333f
+background-color=#141415f2
+text-color=#777783
+border-color=#303038
 
 [urgency=normal]
-background-color=#1a1b26cc
-text-color=#c0caf5
-border-color=#34333f
+background-color=#141415f2
+text-color=#cdcdcd
+border-color=#3a3a46
 
 [urgency=high]
-background-color=#1a1b26cc
-text-color=#eb6f92
-border-color=#eb6f92
-
+background-color=#191416f2
+text-color=#d7a0a0
+border-color=#b86f78
