@@ -1,20 +1,22 @@
 * {
-    /* Accents */
-    active:   #34333f;
-    inactive: #1f1d2e;
-    bg:       rgba(0, 0, 0, 0.8);
-    bg-alt:   rgba(0, 0, 0, 0.8);
-    fg:       #e0def4;
-    fg-alt:   #6e6a86;
+    /* Vague-inspired palette */
+    active:   #3a3a46;
+    inactive: #303038;
+
+    bg:       rgba(20, 20, 21, 0.96);
+    bg-alt:   rgba(25, 25, 27, 0.96);
+
+    fg:       #cdcdcd;
+    fg-alt:   #777783;
+
+    selected-bg: #4c4c5c;
 
     background-color: transparent;
     text-color: @fg;
 
     font-family: "Iosevka Nerd Font";
     font-weight: bold;
-    font-size: 14px;
-
-    selected-bg: #313244;
+    font-size: 16px;
 }
 
 /* Main window */
@@ -31,11 +33,11 @@ inputbar {
     padding: 10px;
     spacing: 8px;
     background-color: @bg-alt;
-    border-radius: 4px;
+    border-radius: 0px;
 }
 
 prompt {
-    text-color: @fg;
+    text-color: #b8b4d0;
 }
 
 entry {
@@ -47,14 +49,14 @@ entry {
 /* List */
 listview {
     lines: 8;
-    spacing: 6px;
-    padding: 8px;
+    spacing: 4px;
+    padding: 6px;
     background-color: transparent;
 }
 
 /* Elements */
 element {
-    padding: 4px;
+    padding: 6px;
     border-radius: 0px;
 }
 
@@ -64,14 +66,15 @@ element normal.normal {
 
 element selected.normal {
     background-color: @selected-bg;
-    text-color: @fg;
+    text-color: #d8d5e3;
 }
 
 element alternate.normal {
     background-color: transparent;
 }
 
+/* Icons */
 element-icon {
-    size: 22px;
+    size: 28px;
     margin: 0 8px 0 0;
 }
