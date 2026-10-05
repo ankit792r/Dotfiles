@@ -18,6 +18,10 @@ return {
         component_separators = "",
         section_separators = "",
         globalstatus = true,
+        disabled_filetypes = {
+          -- statusline = { "snacks_picker_list" }, -- Disables lualine in the explorer/picker window
+          -- winbar = { "snacks_picker_list" }, -- Optional: disables winbar if you use one
+        },
       },
       sections = {
         lualine_a = { 'mode' },
