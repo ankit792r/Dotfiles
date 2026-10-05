@@ -1,9 +1,6 @@
 gui:
   border: "single"
   nerdFontsVersion: "3"
-
-  authorColors:
-    "*": "#f3be7c"
   theme:
     activeBorderColor:
       - "#aeaed1"
@@ -26,3 +23,5 @@ gui:
       - "#d8647e"
     defaultFgColor:
       - "#cdcdcd"
+    authorColors:
+      "*": "#f3be7c"
