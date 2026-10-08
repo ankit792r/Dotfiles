@@ -9,7 +9,8 @@ QtObject {
     readonly property color warning: "#d8647e"
 
     readonly property int barHeight: 30
-    readonly property int modulePadding: 6
+    readonly property int modulePadding: 8
+    readonly property int iconTextGap: 4
 
     readonly property string fontFamily: "Iosevka Nerd Font"
     readonly property int fontSize: 16
@@ -21,5 +22,16 @@ QtObject {
             pixelSize: fontSize,
             weight: fontWeight
         })
+    }
+
+    function volumePercent(audio) {
+        if (!audio)
+            return 0
+        var v = audio.volume
+        if (v === undefined || v === null || isNaN(v))
+            return 0
+        if (v <= 1.0)
+            return Math.round(v * 100)
+        return Math.round(v)
     }
 }

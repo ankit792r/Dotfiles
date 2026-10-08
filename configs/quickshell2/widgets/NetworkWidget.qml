@@ -26,14 +26,24 @@ BarLabel {
 
     readonly property bool isWifi: primary && primary.type === DeviceType.Wifi
 
-    text: {
+    icon: {
         if (!primary)
-            return "󰤭  Disconnected"
+            return "󰤭"
         if (isWifi && wifiNetwork)
-            return "󰤨  " + wifiNetwork.name
+            return "󰤨"
         if (primary.address)
-            return "󰈀  " + primary.address
-        return "󰤨  " + primary.name
+            return "󰈀"
+        return "󰤨"
+    }
+
+    caption: {
+        if (!primary)
+            return "Disconnected"
+        if (isWifi && wifiNetwork)
+            return wifiNetwork.name
+        if (primary.address)
+            return primary.address
+        return primary.name
     }
 
     color: primary ? Theme.foreground : Theme.warning

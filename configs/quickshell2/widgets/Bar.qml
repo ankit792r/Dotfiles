@@ -34,7 +34,12 @@ Scope {
 
                 Item { Layout.fillWidth: true }
 
-                NetworkWidget {}
+                RowLayout {
+                    spacing: 0
+                    AudioWidget {}
+                    BacklightWidget {}
+                    NetworkWidget {}
+                }
             }
         }
     }
