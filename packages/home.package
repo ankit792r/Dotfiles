@@ -1,5 +1,8 @@
 sway
-waybar
+quickshell
+networkmanager
+bluez
+upower
 rofi-wayland
 mako
 kitty

@@ -1,0 +1,16 @@
+[bar]
+background = "#141415"
+background-alpha = 0.8
+text = "#c6c6c6"
+active = "#7e98e8"
+scale-with-font = true
+size-horizontal = 28
+size-vertical = 28
+
+[font]
+family = "Iosevka Nerd Font"
+base-size = 14
+
+[spacing]
+scale = 1.0
+scale-with-font = true
