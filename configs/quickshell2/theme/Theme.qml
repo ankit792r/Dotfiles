@@ -7,6 +7,7 @@ QtObject {
     readonly property color subtle: "#606079"
     readonly property color highlight: "#323437"
     readonly property color warning: "#d8647e"
+    readonly property color success: "#7fa563"
 
     readonly property int barHeight: 30
     readonly property int modulePadding: 8

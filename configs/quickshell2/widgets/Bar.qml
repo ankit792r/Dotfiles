@@ -39,6 +39,12 @@ Scope {
                     AudioWidget {}
                     BacklightWidget {}
                     NetworkWidget {}
+                    BluetoothWidget {}
+                    CpuWidget {}
+                    MemoryWidget {}
+                    TemperatureWidget {}
+                    BatteryWidget {}
+                    TrayWidget {}
                 }
             }
         }
