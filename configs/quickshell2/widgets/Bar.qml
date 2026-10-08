@@ -36,6 +36,7 @@ Scope {
 
                 RowLayout {
                     spacing: 0
+                    Layout.alignment: Qt.AlignVCenter
                     AudioWidget {}
                     BacklightWidget {}
                     NetworkWidget {}

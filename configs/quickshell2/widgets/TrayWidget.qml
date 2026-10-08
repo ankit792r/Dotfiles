@@ -4,6 +4,8 @@ import Quickshell.Widgets
 import qs.theme
 
 Item {
+    id: root
+
     implicitHeight: Theme.barHeight
     implicitWidth: row.implicitWidth + Theme.modulePadding * 2
 
@@ -11,7 +13,6 @@ Item {
         id: row
         anchors.centerIn: parent
         spacing: 5
-        height: Theme.barHeight
 
         Repeater {
             model: SystemTray.items
@@ -20,12 +21,12 @@ Item {
                 required property var modelData
 
                 width: 18
-                height: 18
+                height: Theme.barHeight
 
                 IconImage {
                     anchors.centerIn: parent
-                    width: 18
-                    height: 18
+                    width: 16
+                    height: 16
                     source: modelData.icon
                 }
 
