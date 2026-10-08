@@ -10,11 +10,9 @@ Item {
     BarLabel {
         id: label
         anchors.fill: parent
-        icon: {
-            var p = Backlight.percent
-            return p <= 33 ? "󰃞" : (p <= 66 ? "󰃟" : "󰃠")
-        }
-        caption: Backlight.percent + "%"
+        readonly property int level: Backlight.percent
+        icon: level <= 33 ? "󰃞" : (level <= 66 ? "󰃟" : "󰃠")
+        caption: level + "%"
     }
 
     MouseArea {

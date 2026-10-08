@@ -14,11 +14,27 @@ Singleton {
         running: true
         repeat: true
         triggeredOnStart: true
-        onTriggered: pollProc.running = true
+        onTriggered: root.scheduleRefresh()
+    }
+
+    Timer {
+        id: refreshDebounce
+        interval: 120
+        repeat: false
+        onTriggered: root.runRefresh()
+    }
+
+    function scheduleRefresh() {
+        refreshDebounce.restart()
+    }
+
+    function runRefresh() {
+        readProc.running = false
+        readProc.running = true
     }
 
     Process {
-        id: pollProc
+        id: readProc
         command: ["sh", "-c", "cur=$(brightnessctl get 2>/dev/null); max=$(brightnessctl max 2>/dev/null); echo \"$cur $max\""]
         stdout: StdioCollector {
             onStreamFinished: {
@@ -39,8 +55,15 @@ Singleton {
         }
     }
 
+    Process {
+        id: stepProc
+        command: ["brightnessctl", "set", "+1%"]
+        onExited: root.scheduleRefresh()
+    }
+
     function step(up) {
-        Quickshell.execDetached(["brightnessctl", "set", up ? "+1%" : "1%-"])
-        pollProc.running = true
+        stepProc.command = ["brightnessctl", "set", up ? "+1%" : "1%-"]
+        stepProc.running = false
+        stepProc.running = true
     }
 }
