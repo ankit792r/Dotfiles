@@ -9,13 +9,18 @@ QtObject {
     readonly property color warning: "#d8647e"
     readonly property color success: "#7fa563"
 
+    readonly property color popupBackground: Qt.rgba(20 / 255, 20 / 255, 21 / 255, 0.98)
+    readonly property color popupBorder: "#606079"
+    readonly property int popupPadding: 14
+    readonly property int popupWidth: 360
+
     readonly property int barHeight: 28
     readonly property int modulePadding: 8
-    readonly property int iconTextGap: 4
+    readonly property int iconTextGap: 6
 
     readonly property string fontFamily: "Iosevka Nerd Font"
-    readonly property int fontSize: 14
-    readonly property int fontWeight: Font.Medium
+    readonly property int fontSize: 15
+    readonly property int fontWeight: Font.Bold
 
     function barFont() {
         return Qt.font({

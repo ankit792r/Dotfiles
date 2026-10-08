@@ -66,4 +66,17 @@ Singleton {
         stepProc.running = false
         stepProc.running = true
     }
+
+    Process {
+        id: setPercentProc
+        command: ["brightnessctl", "set", "50%"]
+        onExited: root.scheduleRefresh()
+    }
+
+    function setPercent(percent) {
+        var p = Math.round(Math.max(0, Math.min(100, percent)))
+        setPercentProc.command = ["brightnessctl", "set", p + "%"]
+        setPercentProc.running = false
+        setPercentProc.running = true
+    }
 }

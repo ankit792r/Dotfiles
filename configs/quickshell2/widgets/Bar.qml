@@ -44,8 +44,7 @@ Scope {
                     anchors.verticalCenter: parent.verticalCenter
                     spacing: 0
 
-                    AudioWidget {}
-                    BacklightWidget {}
+                    DesktopControlsWidget {}
                     NetworkWidget {}
                     BluetoothWidget {}
                     CpuWidget {}
