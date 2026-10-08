@@ -17,9 +17,3 @@ vim.api.nvim_create_autocmd("UIEnter", {
     })
   end,
 })
-
--- save text on change
-vim.api.nvim_create_autocmd({ "TextChanged", "TextChangedI" }, {
-	pattern = "*",
-	command = "silent! write",
-})
