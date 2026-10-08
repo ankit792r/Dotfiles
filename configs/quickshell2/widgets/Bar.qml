@@ -20,23 +20,30 @@ Scope {
                 right: true
             }
 
-            RowLayout {
+            Item {
                 anchors.fill: parent
-                spacing: 0
 
                 RowLayout {
+                    anchors.left: parent.left
+                    anchors.verticalCenter: parent.verticalCenter
                     spacing: 2
+
                     ClockWidget {}
                     Item { width: 2; height: 0 }
                     WorkspacesWidget {}
                     WindowTitleWidget {}
                 }
 
-                Item { Layout.fillWidth: true }
+                MprisWidget {
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.verticalCenter: parent.verticalCenter
+                }
 
                 RowLayout {
+                    anchors.right: parent.right
+                    anchors.verticalCenter: parent.verticalCenter
                     spacing: 0
-                    Layout.alignment: Qt.AlignVCenter
+
                     AudioWidget {}
                     BacklightWidget {}
                     NetworkWidget {}
