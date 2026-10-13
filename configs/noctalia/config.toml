@@ -74,7 +74,13 @@ hover_highlight = false
 
 start = ["control_center", "workspaces", "active_window"]
 center = ["clock", "media"]
-end = ["cpu", "ram", "network", "bluetooth", "tray"]
+end = ["cpu", "ram", "network", "bluetooth", "battery", "tray"]
+
+[widget.battery]
+type = "battery"
+device = "auto"
+display_mode = "graphic"
+show_label = true
 
 [widget.active_window]
 min_length = 80
