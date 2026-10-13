@@ -1,0 +1,241 @@
+[theme]
+mode = "dark"
+
+[shell]
+corner_radius_scale = 0
+button_borders = false
+input_borders = false
+popup_borders = false
+card_borders = false
+show_close_buttons = false
+popup_shadows = false
+polkit_agent = true
+
+font_family = "Iosevka Nerd Font"
+offline_mode = true
+setup_wizard_enabled = false
+
+niri_overview_type_to_launch_enabled = true
+show_location = false
+
+[shell.animation]
+enabled = true
+speed = 1.0
+
+[shell.panel]
+transparency_mode = "solid"
+borders = true
+border_color = "outline"
+border_width = 1.0
+shadow = false
+open_near_click_control_center = true
+open_near_click_launcher = true
+open_near_click_clipboard = true
+open_near_click_wallpaper = true
+open_near_click_session = true
+session_placement = "floating"
+session_position = "center"
+
+[shell.session]
+grid = true
+grid_columns = 1
+show_shortcuts = true
+
+[shell.launcher]
+layout = "full"
+width = 760
+search_position = "bottom"
+default_view = "recent"
+categories = false
+category_icons_only = false
+show_settings_button = true
+show_session_button = true
+show_icons = true
+show_app_origin_indicator = true
+compact = false
+app_grid = false
+show_app_actions = false
+track_usage = true
+sort_by_usage = true
+fetch_exchange_rates = true
+provider_prefix = "/"
+auto_paste = "auto"
+
+[bar.default]
+position = "top"
+thickness = 28
+margin_ends = 0
+radius = 0
+background_opacity = 0.85
+widget_spacing = 14
+shadow = false
+compositor_blur = false
+hover_highlight = false
+
+start = ["control_center", "workspaces", "active_window"]
+center = ["clock", "media"]
+end = ["cpu", "ram", "network", "bluetooth", "tray"]
+
+[widget.active_window]
+min_length = 80
+max_length = 260
+icon_size = 14
+title_scroll = "on_hover"
+display = "text_only"
+show_empty_label = false
+
+[widget.clock]
+type = "clock"
+format = "{:%a %d %b  %H:%M}"
+scale = 1.0
+
+# CPU usage indicator
+[widget.cpu]
+type = "sysmon"
+stat = "cpu_usage"
+visualization = "none"
+show_value = true
+show_glyph = true
+
+# RAM usage indicator
+[widget.ram]
+type = "sysmon"
+stat = "ram_used"
+visualization = "none"
+show_value = true
+show_glyph = true
+
+[widget.bluetooth]
+show_label = true
+
+[widget.media]
+album_art_only = false
+hide_album_art = true
+hide_when_no_media = true
+
+[osd]
+position = "top_right"
+position_vertical = "top_left"
+orientation = "vertical"
+hide_delay_ms = 1400
+scale = 1.0
+background_opacity = 0.97
+border = true
+border_color = "outline"
+border_width = 1
+follow_focused_output = false
+offset_x = 20
+offset_y = 8
+
+[osd.kinds]
+volume = true
+volume_output = true
+volume_input = true
+brightness = true
+wifi = true
+bluetooth = true
+power_profile = true
+caffeine = true
+nightlight = true
+dnd = true
+lock_keys = true
+keyboard_layout = true
+media = true
+privacy = true
+keyboard_backlight = true
+
+[control_center]
+sidebar = "none"
+sidebar_section = "none"
+
+[wallpaper]
+enabled = false
+
+[audio]
+enable_overdrive = false
+enable_sounds = false
+enable_volume_sounds = false
+enable_notification_sounds = false
+enable_power_sounds = false
+enable_screenshot_sounds = false
+
+# [idle]
+# behavior_order = ["lock", "screen-off", "suspend"]
+# pre_action_fade_seconds = 2.0
+#
+# [idle.behavior.lock]
+# timeout = 600
+# action = "lock"
+# enabled = false  # explicitly disabled in the default config
+#
+# [idle.behavior.screen-off]
+# timeout = 660
+# action = "screen_off"  # turns monitors off, and back on when you return
+# enabled = false  # explicitly disabled in the default config
+#
+# [idle.behavior.suspend]
+# timeout = 900
+# action = "lock_and_suspend"  # or action = "suspend" with lock_before_suspend = false
+#
+# [idle.behavior.custom]
+# timeout = 48
+# action = "command"
+# command = "notify-send 'Idle' 'Going idle'"
+# resume_command = "notify-send 'Idle' 'Back from idle'"
+#
+
+[idle]
+pre_action_fade_seconds = 2
+
+# 1. Dim the monitor after 2.5 minutes
+[idle.behavior.dim-screen]
+enabled = true
+action = "command"
+timeout = 150
+command = "brightnessctl -s set 10"
+resume_command = "brightnessctl -r"
+
+# 2. Turn off keyboard backlight after 2.5 minutes
+[idle.behavior.keyboard-backlight]
+enabled = true
+action = "command"
+timeout = 150
+command = "brightnessctl -sd rgb:kbd_backlight set 0"
+resume_command = "brightnessctl -rd rgb:kbd_backlight"
+
+# 3. Lock after 5 minutes
+[idle.behavior.lock]
+enabled = true
+action = "lock"
+timeout = 300
+command = "noctalia:session lock"
+
+# 4. Turn off monitors after 5.5 minutes
+[idle.behavior.screen-off]
+enabled = true
+action = "command"
+timeout = 330
+command = "niri msg action power-off-monitors"
+resume_command = "niri msg action power-on-monitors"
+
+# 5. Suspend after 10 minutes
+[idle.behavior.suspend]
+enabled = true
+action = "suspend"
+timeout = 600
+lock_before_suspend = true
+
+[lockscreen]
+enabled = true  # master switch for session lock
+lock_before_suspend = true  # lock on PrepareForSleep (lid close / systemctl suspend)
+grace_period_seconds = 0  # passwordless unlock window after locking; 0 (default) = off
+fingerprint = true  # allow fingerprint (PAM) authentication on the lock screen
+allow_empty_password = false  # submit Enter with an empty password (security-key PAM stacks)
+blurred_desktop = true  # use a desktop snapshot as the lock screen background
+transition = ["fade"]
+transition_duration = 500  # lock/unlock animation length in milliseconds
+edge_smoothness = 0.3  # transition edge feathering (0.0 = sharp, 1.0 = soft)
+blur_intensity = 0.5  # background blur (0.0 = none, 1.0 = maximum)
+tint_intensity = 0.3  # surface-color tint over the background (0.0 = none, 1.0 = opaque)
+wallpaper = ""  # optional image path; empty uses the desktop wallpaper per output
+monitors = []  # connectors that show the lock screen; empty = all outputs, others stay black

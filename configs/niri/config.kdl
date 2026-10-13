@@ -114,14 +114,17 @@ environment {
 // See the binds section below for more spawn examples.
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
-spawn-at-startup "gammastep" "-l" "19.07:72.87" "-m" "wayland"
-spawn-sh-at-startup "uwsm-app -- waybar"
-spawn-sh-at-startup "uwsm-app -- mako"
-spawn-sh-at-startup "uwsm-app -- hypridle"
-spawn-sh-at-startup "uwsm-app -- wlsunset -t 5000"
+// spawn-at-startup "gammastep" "-l" "19.07:72.87" "-m" "wayland"
+// spawn-sh-at-startup "uwsm-app -- waybar"
+// spawn-sh-at-startup "uwsm-app -- mako"
+// spawn-sh-at-startup "uwsm-app -- hypridle"
+// spawn-sh-at-startup "uwsm-app -- wlsunset -t 5000"
+
+spawn-at-startup "noctalia"
 spawn-sh-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 spawn-sh-at-startup "uwsm-app -- cliphist store"
 spawn-sh-at-startup "uwsm-app -- udiskie"
+
 
 prefer-no-csd
 hotkey-overlay {
@@ -129,6 +132,18 @@ hotkey-overlay {
 }
 
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+
+debug {
+  // Allows notification actions and window activation from Noctalia.
+  honor-xdg-activation-with-invalid-serial
+}
+
+window-rule {
+  match app-id="dev.noctalia.Noctalia"
+  open-floating true
+  default-column-width { fixed 1080; }
+  default-window-height { fixed 920; }
+}
 
 // Window rules let you adjust behavior for individual windows.
 window-rule {
@@ -270,14 +285,31 @@ layer-rule {
 
 // Bindings
 binds {
+
+    // Core Noctalia binds
+    Mod+Space { spawn-sh "noctalia msg panel-toggle launcher"; }
+    Mod+S { spawn-sh "noctalia msg panel-toggle control-center"; }
+    Mod+Comma { spawn-sh "noctalia msg settings-toggle"; }
+
+    // Audio & Brightness
+    XF86AudioRaiseVolume { spawn-sh "noctalia msg volume-up"; }
+    XF86AudioLowerVolume { spawn-sh "noctalia msg volume-down"; }
+    XF86AudioMute { spawn-sh "noctalia msg volume-mute"; }
+    XF86MonBrightnessUp { spawn-sh "noctalia msg brightness-up"; }
+    XF86MonBrightnessDown { spawn-sh "noctalia msg brightness-down"; }
+
+
     Mod+Return hotkey-overlay-title="Open a Terminal: foot" { spawn "foot"; }
     Mod+Shift+Return hotkey-overlay-title="Open Kitty" { spawn "kitty"; }
 
-    Mod+Backspace hotkey-overlay-title="Show power menu" { spawn-sh "uwsm-app power-menu"; }
-    Mod+Backslash hotkey-overlay-title="Show system menu" { spawn-sh "uwsm-app system-menu"; }
-    Mod+Space hotkey-overlay-title="Run an Application" { spawn-sh "uwsm-app app-menu"; } 
+    Mod+Backspace { spawn "noctalia" "msg" "panel-toggle" "session"; }
 
-    Mod+Alt+L hotkey-overlay-title="Lock the Screen" { spawn-sh "pkill hyprlock || hyprlock"; }
+    // Mod+Backspace hotkey-overlay-title="Show power menu" { spawn-sh "uwsm-app power-menu"; }
+    Mod+Backslash hotkey-overlay-title="Show system menu" { spawn-sh "uwsm-app system-menu"; }
+
+    // Mod+Space hotkey-overlay-title="Run an Application" { spawn-sh "uwsm-app app-menu"; } 
+
+    Mod+Alt+L hotkey-overlay-title="Lock the Screen" { spawn "noctalia" "msg" "session" "lock"; }
     
     Mod+O repeat=false { toggle-overview; }
     Mod+Q repeat=true { close-window; }
@@ -286,18 +318,18 @@ binds {
 
     Mod+E hotkey-overlay-title="Open file manager" { spawn-sh "yazi"; }
 
-    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
-    XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
-    XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
+    // XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
+    // XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
+    // XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
+    // XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
 
     XF86AudioPlay        allow-when-locked=true { spawn-sh "playerctl play-pause"; }
     XF86AudioStop        allow-when-locked=true { spawn-sh "playerctl stop"; }
     XF86AudioPrev        allow-when-locked=true { spawn-sh "playerctl previous"; }
     XF86AudioNext        allow-when-locked=true { spawn-sh "playerctl next"; }
 
-    XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+5%"; }
-    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "5%-"; }
+    // XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+5%"; }
+    // XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "5%-"; }
 
     Mod+Left  { focus-column-left; }
     Mod+Down  { focus-window-down; }
@@ -442,9 +474,9 @@ binds {
     Mod+BracketRight { consume-or-expel-window-right; }
 
     // Consume one window from the right to the bottom of the focused column.
-    Mod+Comma  { consume-window-into-column; }
+    // Mod+Comma  { consume-window-into-column; }
     // Expel the bottom window from the focused column to the right.
-    Mod+Period { expel-window-from-column; }
+    // Mod+Period { expel-window-from-column; }
 
     // Cycle through widths set in preset-column-widths.
     Mod+R { switch-preset-column-width; }
