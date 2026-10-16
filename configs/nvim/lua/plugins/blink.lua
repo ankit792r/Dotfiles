@@ -46,7 +46,8 @@ return {
     sources = {
       default = { "lsp", "path", "snippets", "buffer" },
     },
-    fuzzy = { implementation = "prefer_rust" },
+    fuzzy = { implementation = "lua" },
+    -- fuzzy = { implementation = "prefer_rust" },
     cmdline = {
       enabled = true,
       keymap = {
