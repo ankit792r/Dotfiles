@@ -28,8 +28,8 @@
   border-radius: 0;
   min-height: 0;
   font-family: "Iosevka Nerd Font";
-  font-weight: 700;
-  font-size: 14px;
+  font-weight: 500;
+  font-size: 15px;
 }
 
 window#waybar {
