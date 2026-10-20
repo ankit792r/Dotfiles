@@ -195,6 +195,7 @@ window-rule {
   match app-id=r#"^wev$"#
   match app-id=r#"^xarchiver$"#
   match app-id=r#"^firefox$"# title=r#"^(Picture-in-Picture|Library|About Mozilla Firefox)$"#
+  match title=r#"^Waynotes$"#
 
   open-floating true
 }
