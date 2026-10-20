@@ -108,19 +108,11 @@ environment {
   BROWSER "firefox"
 }
 
-// Add lines like this to spawn processes at startup.
-// Note that running niri as a session supports xdg-desktop-autostart,
-// which may be more convenient to use.
-// See the binds section below for more spawn examples.
-
-// This line starts waybar, a commonly used bar for Wayland compositors.
-spawn-at-startup "gammastep" "-l" "19.07:72.87" "-m" "wayland"
 spawn-sh-at-startup "uwsm-app -- waybar"
 spawn-sh-at-startup "uwsm-app -- mako"
 spawn-sh-at-startup "uwsm-app -- hypridle"
 spawn-sh-at-startup "uwsm-app -- wlsunset -t 5000"
 
-// spawn-at-startup "noctalia"
 spawn-sh-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 spawn-sh-at-startup "uwsm-app -- cliphist store"
 spawn-sh-at-startup "uwsm-app -- udiskie"
@@ -136,20 +128,6 @@ screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 debug {
   // Allows notification actions and window activation from Noctalia.
   honor-xdg-activation-with-invalid-serial
-}
-
-window-rule {
-  match app-id="dev.noctalia.Noctalia"
-  open-floating true
-  default-column-width { fixed 1080; }
-  default-window-height { fixed 920; }
-}
-
-// Window rules let you adjust behavior for individual windows.
-window-rule {
-  draw-border-with-background false
-  // geometry-corner-radius 12
-  clip-to-geometry true
 }
 
 window-rule {
@@ -301,6 +279,7 @@ binds {
     Mod+B hotkey-overlay-title="Open Browser" { spawn "firefox"; }
 
     Mod+E hotkey-overlay-title="Open file manager" { spawn-sh "yazi"; }
+    Mod+Ctrl+E repeat=false { spawn-sh "wl-mirror $(niri msg -j focused-output | jq -r .name)"; }
 
     XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
     XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
@@ -458,9 +437,9 @@ binds {
     Mod+BracketRight { consume-or-expel-window-right; }
 
     // Consume one window from the right to the bottom of the focused column.
-    // Mod+Comma  { consume-window-into-column; }
+    Mod+Comma  { consume-window-into-column; }
     // Expel the bottom window from the focused column to the right.
-    // Mod+Period { expel-window-from-column; }
+    Mod+Period { expel-window-from-column; }
 
     // Cycle through widths set in preset-column-widths.
     Mod+R { switch-preset-column-width; }
