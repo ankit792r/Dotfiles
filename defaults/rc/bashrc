@@ -37,3 +37,4 @@ bind 'set vi-cmd-mode-string "\1\e[2 q\2"'
 
 source "$HOME/.alias"
 source "$HOME/.functions"
+eval "$(mise activate bash)"
