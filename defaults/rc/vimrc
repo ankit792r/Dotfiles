@@ -142,15 +142,15 @@ set nowrap
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin Configuration
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call plug#begin()
-
-" List your plugins here
-Plug 'tpope/vim-sensible'
-
-" Rose pinn
-Plug 'rose-pine/vim'
-
-call plug#end()
+" call plug#begin()
+"
+" " List your plugins here
+" Plug 'tpope/vim-sensible'
+"
+" " Rose pinn
+" Plug 'rose-pine/vim'
+"
+" call plug#end()
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -159,4 +159,4 @@ call plug#end()
 let g:disable_bg = 1
 " Optional: Enable transparency for floating windows/popups
 let g:disable_float_bg = 1
-colorscheme rosepine
+" colorscheme rosepine
