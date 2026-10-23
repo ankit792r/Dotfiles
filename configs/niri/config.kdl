@@ -1,3 +1,17 @@
+prefer-no-csd
+
+hotkey-overlay {
+    skip-at-startup
+}
+
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+
+debug {
+  // Allows notification actions and window activation from Noctalia.
+  honor-xdg-activation-with-invalid-serial
+}
+
+
 input {
   keyboard {
     xkb {
@@ -108,8 +122,10 @@ environment {
   BROWSER "firefox"
 }
 
-spawn-sh-at-startup "uwsm-app -- waybar"
-spawn-sh-at-startup "uwsm-app -- mako"
+spawn-at-startup "noctalia"
+
+// spawn-sh-at-startup "uwsm-app -- waybar"
+// spawn-sh-at-startup "uwsm-app -- mako"
 spawn-sh-at-startup "uwsm-app -- hypridle"
 spawn-sh-at-startup "uwsm-app -- wlsunset -t 5000"
 
@@ -117,18 +133,6 @@ spawn-sh-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 spawn-sh-at-startup "uwsm-app -- cliphist store"
 spawn-sh-at-startup "uwsm-app -- udiskie"
 
-
-prefer-no-csd
-hotkey-overlay {
-    skip-at-startup
-}
-
-screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
-
-debug {
-  // Allows notification actions and window activation from Noctalia.
-  honor-xdg-activation-with-invalid-serial
-}
 
 window-rule {
   match app-id=r#"^firefox$"#
@@ -235,6 +239,14 @@ window-rule {
 // Layer rules
 
 layer-rule {
+    match namespace="^noctalia-"
+    background-effect {
+        blur false
+    }
+}
+
+
+layer-rule {
   match namespace="^wallpaper$"
   match namespace="^hyprpaper$"
   match namespace="^swaybg$"
@@ -272,25 +284,32 @@ binds {
 
     Mod+Backspace hotkey-overlay-title="Show power menu" { spawn-sh "uwsm-app power-menu"; }
     Mod+Backslash hotkey-overlay-title="Show system menu" { spawn-sh "uwsm-app system-menu"; }
-    Mod+Space hotkey-overlay-title="Run an Application" { spawn-sh "uwsm-app app-menu"; } 
+    // Mod+Space hotkey-overlay-title="Run an Application" { spawn-sh "uwsm-app app-menu"; } 
     Mod+Alt+L hotkey-overlay-title="Lock the Screen" { spawn-sh "pkill hyprlock || hyprlock"; }
+
+    Mod+Space { spawn-sh "noctalia msg panel-toggle launcher"; }
     
     Mod+O repeat=false { toggle-overview; }
     Mod+Q repeat=true { close-window; }
 
+    XF86AudioRaiseVolume { spawn-sh "noctalia msg volume-up"; }
+    XF86AudioLowerVolume { spawn-sh "noctalia msg volume-down"; }
+    XF86AudioMute { spawn-sh "noctalia msg volume-mute"; }
+    XF86MonBrightnessUp { spawn-sh "noctalia msg brightness-up"; }
+    XF86MonBrightnessDown { spawn-sh "noctalia msg brightness-down"; }
 
-    XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
-    XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
-    XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
-    XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
+    // XF86AudioRaiseVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1+ -l 1.0"; }
+    // XF86AudioLowerVolume allow-when-locked=true { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.1-"; }
+    // XF86AudioMute        allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"; }
+    // XF86AudioMicMute     allow-when-locked=true { spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"; }
 
     XF86AudioPlay        allow-when-locked=true { spawn-sh "playerctl play-pause"; }
     XF86AudioStop        allow-when-locked=true { spawn-sh "playerctl stop"; }
     XF86AudioPrev        allow-when-locked=true { spawn-sh "playerctl previous"; }
     XF86AudioNext        allow-when-locked=true { spawn-sh "playerctl next"; }
 
-    XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+5%"; }
-    XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "5%-"; }
+    // XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+5%"; }
+    // XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "5%-"; }
 
     Mod+Ctrl+E repeat=false { spawn-sh "wl-mirror $(niri msg -j focused-output | jq -r .name)"; }
 
